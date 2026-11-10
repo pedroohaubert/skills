@@ -7,7 +7,8 @@ Public repo with Pedro's skills and agent setup, installable with `npx skills ad
 - Load the `writing-for-agents` skill before writing or editing any of those files.
 - Skills live in `skills/<name>/SKILL.md`, with `name` matching the folder. `SKILL.md` exists only under `skills/`: skills.sh scans the whole repo and installs any it finds.
 - `config/<target>/` mirrors a machine directory: `agents` → `~/.agents`, `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agent-neutral material goes in `agents`; config for one agent goes in its own folder. A new target needs a line in `agent_dir` in `install.sh`.
-- `config/agents/AGENTS.md` stays short: general rules plus a table of cases pointing at `config/agents/playbooks/`. Details for one case go in its playbook. Claude Code reaches it through `config/claude/CLAUDE.md` (an `@` import); OpenCode through the `config/opencode/AGENTS.md` symlink.
+- `config/agents/` is an instruction tree: `AGENTS.md` is the root every agent reads on every task (replies, autonomy, done, delegation, plus a table of branches); branches (`code.md`, `setup.md`) and `playbooks/` are read only when their case fires. Point at them with plain `~/.agents/...` paths, never `@` imports, which load eagerly. Run `./check-tree.sh` after any edit.
+- Claude Code reaches the root through `config/claude/CLAUDE.md` (an `@` import); OpenCode through the `config/opencode/AGENTS.md` symlink. Both load it alongside a project's own instructions.
 - `referencias.md` records what was studied and what we took from each source. Read it before proposing a setup change; add any article, post, or repo the user sends.
 - Third-party skills are not copied here.
 - Keep `install.sh` identical in both repos.
