@@ -13,5 +13,5 @@
       }
     }
   },
-  "plugins": ["@dietrichgebert/ponytail"]
+  "plugins": ["@dietrichgebert/ponytail", "github:michael-denyer/pstack-claude#main"]
 }
