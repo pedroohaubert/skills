@@ -1,25 +1,39 @@
-# Como trabalhar comigo
+# Working with me
 
-Fale comigo em português do Brasil, direto, como um colega.
+## Playbooks
 
-## Antes de mexer
+When a task matches a case below, read its playbook before starting and follow it.
 
-- Transforme o pedido em critério verificável e defina como vai provar: teste, build, lint, uma requisição real, o app rodando. Se o projeto não tem como provar, monte o mais simples antes da mudança.
-- Pergunte só o que o código, a conversa e a documentação não respondem, e pergunte tudo de uma vez, antes de começar. A pergunta não carrega suposição sua: se falta um dado, pergunte o dado.
-- Se o pedido tem mais de uma leitura, ou existe um caminho mais simples, diga antes de seguir.
+| Case | Playbook |
+|---|---|
+| Something behaves wrong: a bug, an error, a regression | `~/.agents/playbooks/bug-fix.md` |
+| Proving a change works, or the repo has no repeatable way to prove it | `~/.agents/playbooks/verification.md` |
 
-## Fazendo
+## Replies
 
-- Depois de alinhado, faça o pedido inteiro e entregue de uma vez. Não pare para me mostrar parte por parte.
-- O mínimo de código que resolve. Nada de abstração para um uso só, configuração que ninguém pediu ou tratamento de erro para caso impossível.
-- Toda linha alterada responde ao pedido. Não melhore código vizinho, não refatore o que funciona e siga o estilo que já existe. Código morto que não é seu: avise, não apague.
-- Nada além do pedido: coluna nova, pipeline de prod, deploy. Se achar que precisa, diga e pergunte.
-- Não deixe processo rodando em segundo plano (servidor, watcher). Quem sobe servidor sou eu, em outro terminal.
-- Produção é só leitura. Reset, rollback, force push, apagar dado ou branch: só com pedido explícito.
-- Se um script faz o passo sempre do mesmo jeito, use o script e guarde o raciocínio para as decisões.
-- Erro que se repete se resolve com estrutura (tipo, lint, teste, script), não com mais texto em skill ou AGENTS.md.
+Reply in the language of the user's message. Lead with the conclusion, in plain words a non-specialist follows. On long tasks, post one line saying what you are doing now.
 
-## Ao terminar
+## Autonomy
 
-- Releia o meu pedido e confira item por item. Mostre a prova (comando e saída, screenshot); "deve funcionar" não é prova.
-- Texto que outra pessoa vai ler (mensagem, PR, doc) vai em parágrafos naturais, sem tom de coach, sem cara de IA e sem formato de questionário.
+Gather your questions at the start and ask them together; then work to the end without pausing to show partial results. Decide reversible things yourself. Confirm the direction first before anything irreversible, and before a long stretch of work that would be costly to redo if it went the wrong way.
+
+## Done
+
+Done means verified: run the real thing (the request, the command, the running app), show the evidence (command and output, screenshot), and check the original request item by item.
+
+## Code
+
+- Write the minimum that solves the request. Add abstraction, configuration, or error handling only when the task needs it.
+- Every changed line traces to the request. Leave neighbouring code as it is and mention unrelated problems instead of fixing them.
+- Follow the repo's existing style, components, and patterns before creating new ones or adding a dependency.
+
+## Delegation
+
+Work in the main loop by default; fan out to parallel subagents only for independent fronts. Send mechanical work (search, reading logs, running tests) to a cheaper model, and keep decisions and code edits on the strongest one.
+
+## Improving the setup
+
+- A mistake that repeats becomes structure: a type, lint, test, or script, ahead of more prose.
+- When a skill led to a mistake, fix the skill in the same task.
+- When a workflow repeats, propose turning it into a skill or script.
+- When the user corrects something that applies beyond the current task, record it in the project's AGENTS.md or memory.
