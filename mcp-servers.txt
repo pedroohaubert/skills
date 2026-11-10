@@ -1,2 +1,3 @@
 # MCP servers (HTTP). Format: <name> <url>
 shoogle https://mcp.shoogle.dev/mcp
+parallel https://mcp.parallel.ai/mcp

@@ -6,6 +6,10 @@
       "shoogle": {
         "type": "remote",
         "url": "https://mcp.shoogle.dev/mcp"
+      },
+      "parallel": {
+        "type": "remote",
+        "url": "https://mcp.parallel.ai/mcp"
       }
     }
   },
