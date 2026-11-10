@@ -1,3 +1,8 @@
 # MCP servers (HTTP). Format: <name> <url>
+# Every server here works without an account or API key.
 shoogle https://mcp.shoogle.dev/mcp
 parallel https://mcp.parallel.ai/mcp
+exa-hosted https://mcp.exa.ai/mcp
+inspo https://inspomcp.dev/api/mcp
+kage https://kage.design/mcp
+onepagelove https://api.onepagelove.com/mcp

@@ -55,8 +55,14 @@ For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstac
 
 | MCP server | What it does |
 |---|---|
-| `shoogle` | Search for components across shadcn registries. No account. |
-| `parallel` | Web search and page extraction, free and anonymous. Signing in adds research, higher rate limits, and monthly credits. |
+| `shoogle` | Search for components across shadcn registries. |
+| `parallel` | Web search and page extraction. Signing in adds research, higher rate limits, and monthly credits. |
+| `exa-hosted` | Search and fetch pages through Exa's hosted server. |
+| `inspo` | Screenshot archive of real production sites, with palettes, fonts and page structure. |
+| `kage` | Design library of real product screens, with ready-to-paste prompts and extracted components. |
+| `onepagelove` | One-page website and section references since 2008, with hero copy and typefaces. |
+
+All of them work without an account or API key.
 
 The sources behind the setup are in [referencias.md](referencias.md). The model choice for each kind of task is in [modelos.md](modelos.md). What is still to do is in [PROXIMOS-PASSOS.md](PROXIMOS-PASSOS.md).
 

@@ -10,6 +10,22 @@
       "parallel": {
         "type": "remote",
         "url": "https://mcp.parallel.ai/mcp"
+      },
+      "exa-hosted": {
+        "type": "remote",
+        "url": "https://mcp.exa.ai/mcp"
+      },
+      "inspo": {
+        "type": "remote",
+        "url": "https://inspomcp.dev/api/mcp"
+      },
+      "kage": {
+        "type": "remote",
+        "url": "https://kage.design/mcp"
+      },
+      "onepagelove": {
+        "type": "remote",
+        "url": "https://api.onepagelove.com/mcp"
       }
     }
   },
