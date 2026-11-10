@@ -3,10 +3,6 @@
   "model": "opencode-go/deepseek-v4.1-flash",
   "mcp": {
     "servers": {
-      "react-grab-mcp": {
-        "type": "local",
-        "command": ["npx", "-y", "@react-grab/mcp", "--stdio"]
-      },
       "shoogle": {
         "type": "remote",
         "url": "https://mcp.shoogle.dev/mcp"
