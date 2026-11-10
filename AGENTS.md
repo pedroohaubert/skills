@@ -8,4 +8,5 @@ Repo público com as skills e a config de agentes do Pedro, instalável por `npx
 - `config/<alvo>/` espelha um diretório da máquina: `agents` → `~/.agents`, `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. O que serve a qualquer agente vai em `agents`; config de um agente só vai na pasta dele. Alvo novo precisa de uma linha em `agent_dir` no `install.sh`.
 - Skill de terceiro não é copiada para cá: entra como linha em `third-party-skills.txt`.
 - `install.sh` deve continuar idêntico nos dois repos.
+- `referencias.md` guarda o que já foi estudado e o que tiramos de cada fonte. Leia antes de propor mudança no setup; artigo, post ou repo novo que o Pedro mandar entra lá.
 - Depois de mexer em `skills/`, confira com `npx skills add . --list`.

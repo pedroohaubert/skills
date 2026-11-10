@@ -22,4 +22,6 @@ cd ~/skills && ./install.sh   # ou: config | skills | third-party
 
 `config/<alvo>/` espelha um diretório da máquina e vira symlink lá: `agents` → `~/.agents` (instruções universais, lidas por qualquer agente), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agentes usados: Claude Code e OpenCode; o que der para ser neutro fica em `~/.agents`.
 
+As fontes que embasam o setup ficam em [referencias.md](referencias.md).
+
 Coisa pessoal (skills do trabalho, dotfiles do terminal) fica num repo privado com a mesma estrutura e o mesmo `install.sh`.
