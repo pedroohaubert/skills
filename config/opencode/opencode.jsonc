@@ -1,6 +1,15 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {
+    "react-grab-mcp": {
+      "type": "local",
+      "command": [
+        "npx",
+        "-y",
+        "@react-grab/mcp",
+        "--stdio"
+      ]
+    },
     "shoogle": {
       "type": "remote",
       "url": "https://mcp.shoogle.dev/mcp"
