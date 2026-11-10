@@ -12,7 +12,7 @@ npx skills add pedroohaubert/skills -g --all # todas, globais, todos os agentes
 | Skill | Para quê |
 |---|---|
 | `design` | Roteador de design e interface: processo, bibliotecas preferidas, tipografia e as skills do Emil Kowalski como subarquivos |
-| `business-decision-questionnaire` | Transforma as decisões de um plano, ticket ou PR numa mensagem que um especialista do negócio responde de uma vez |
+| `message` | Escreve a mensagem que você vai colar para alguém (Teams, Slack, e-mail): explicação, status do que subiu ou perguntas para o negócio. Sai curta, natural e já copiada para a área de transferência |
 
 ## Instalar o setup inteiro
 
