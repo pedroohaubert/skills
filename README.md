@@ -51,7 +51,12 @@ cd ~/skills && ./install.sh   # or: config | skills | third-party | plugins | mc
 
 `config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Config that belongs to one agent stays in that agent's folder.
 
-For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt`.
+For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt`, and `mcp` registers the servers listed in `mcp-servers.txt`.
+
+| MCP server | What it does |
+|---|---|
+| `shoogle` | Search for components across shadcn registries. No account. |
+| `parallel` | Web search and page extraction, free and anonymous. Signing in adds research, higher rate limits, and monthly credits. |
 
 The sources behind the setup are in [referencias.md](referencias.md). The model choice for each kind of task is in [modelos.md](modelos.md). What is still to do is in [PROXIMOS-PASSOS.md](PROXIMOS-PASSOS.md).
 
