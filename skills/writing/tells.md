@@ -13,7 +13,7 @@ Text that reads as generated loses the reader. Removing the tells is part of wri
 
 `humanizer/GUIDE.md` is the humanizer skill by blader (MIT), kept whole. Follow it with these changes:
 
-- **Voice.** The voice profile from step 3 of this skill is the writer's sample. It overrides the guide's patterns wherever the two disagree.
+- **Voice.** The voice profile from step 3 of this skill is the writer's sample. It overrides the guide's patterns wherever the two disagree. Matching the voice changes wording only: every point the text makes survives, its conclusion included, and nothing is added.
 - **Return.** Always use the guide's Embedded mode: run the mark, draft, check, and final steps silently, and hand back only the final text. The draft and the list of remaining patterns stay out of the reply.
 - **Language.** The guide's examples are in English. Every pattern applies to its equivalent construction in the text's language; the Portuguese forms below are the common ones.
 

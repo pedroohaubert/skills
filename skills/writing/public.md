@@ -2,9 +2,11 @@
 
 Text published under the user's name. It carries the full voice from the voice profile.
 
+The shapes below guide Write mode. In Improve mode the user's own structure and order stand, and only the wording changes.
+
 | Text | Shape |
 |---|---|
-| LinkedIn post | Post length. The first line shows the idea through a concrete example. Technical explanation stays simple. Hashtags only when asked: three to five, at the end, in CamelCase. |
+| LinkedIn post | Post length. The first line shows the idea through a concrete example. Technical explanation stays simple. Hashtags appear only when the user asks for them: three to five, at the end, in CamelCase. |
 | Article | The user's reasoning in the user's order, one idea per paragraph, each idea followed by its example. When the text will carry a GIF, video, or image, the example it shows is named in the text. |
 | Bio or About | The user's facts exactly as they wrote them: roles, achievements, numbers. |
 | Translation | Faithful to the user's text and tone. The content stays as it is. |

@@ -12,7 +12,7 @@ Pick the mode before touching the text. The wrong mode is the costliest mistake 
 | The user | Mode | What changes |
 |---|---|---|
 | Gives their text and asks to fix or correct it, or says to keep their words | **Correct** | Spelling, accents, agreement, punctuation, and errors that break the sense. Every word, joke, aside, question, and the order stay. The correction is nearly invisible. |
-| Gives their text and asks to improve, tighten, or shorten it | **Improve** | Sentences. Their ideas, order of reasoning, key words, and voice marks (rhetorical questions, parentheses, humor, examples) stay. |
+| Gives their text and asks to improve, tighten, shorten, or make it sound natural | **Improve** | Sentences. Every idea of theirs stays, in their order, with their key words and voice marks (rhetorical questions, parentheses, humor, examples). The result says what their text says: no new claim, example, or aside. |
 | Asks for new text, with or without notes | **Write** | Their notes or draft are the base: organize them, keeping their phrasing, and add only the connecting words they need. Each idea is said once. |
 
 Torn between Correct and Improve: correct, and offer the improved version in one line at the end. Correct mode skips step 2 and step 5, and reads only the Corrections section of the voice profile.
@@ -43,5 +43,5 @@ Write the final text to a temporary file and run `scripts/copy.sh <file>`, so th
 
 1. the same text, as plain paragraphs;
 2. in Correct mode, a short, dry list of what changed;
-3. at most one line for a suggestion beyond the request;
+3. at most one line when the text needs a decision from the user, such as a fact you could not confirm;
 4. a last line saying it was copied.
