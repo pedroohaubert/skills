@@ -59,6 +59,18 @@ arXiv:2609.00006 · https://arxiv.org/abs/2609.00006 · lido em 2026-11-10
 
 **Tiramos:** a evidência numérica da tese; skills de terceiros entram com curadoria.
 
+### Karpathy-inspired guidelines (multica-ai, 2026-01)
+https://github.com/multica-ai/andrej-karpathy-skills · lido em 2026-11-10
+
+Um único `CLAUDE.md` montado a partir das observações do Karpathy sobre os erros de LLM programando: assume coisas sem checar, não pergunta, não mostra trade-off, complica demais e mexe em código que não entendeu. Quatro princípios:
+
+1. **Pensar antes de codar.** Explicite as suposições, mostre as leituras possíveis, diga se há caminho mais simples e pare quando estiver confuso.
+2. **Simplicidade.** O mínimo que resolve: nada de abstração de uso único, configuração não pedida ou erro para caso impossível.
+3. **Mudanças cirúrgicas.** Toda linha alterada responde ao pedido; siga o estilo existente; avise do código morto alheio, sem apagar.
+4. **Execução por objetivo.** Transforme a tarefa em critério verificável ("escreva o teste que reproduz o bug e faça passar") e itere até verificar. Do Karpathy: "não diga o que fazer, dê o critério de sucesso e deixe ele ir."
+
+**Tiramos:** os quatro entraram no nosso AGENTS.md universal, junto com as correções que você repete no histórico.
+
 ## Posts
 
 ### "O segredo está no prompt" (post, autor não registrado)
