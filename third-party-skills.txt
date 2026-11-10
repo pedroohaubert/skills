@@ -1,0 +1,8 @@
+# Skills de terceiros que eu uso. Formato: <repo> <skill> [<skill>...]
+# Instale com ./install.sh third-party
+DannyMac180/skills be-ambitious
+Leonxlnx/taste-skill brandkit design-taste-frontend design-taste-frontend-v1 design-taste-frontend-v2-experimental full-output-enforcement gpt-taste high-end-visual-design image-to-code imagegen-frontend-mobile imagegen-frontend-web industrial-brutalist-ui minimalist-ui redesign-existing-projects stitch-design-taste
+blader/humanizer humanizer
+emilkowalski/skill animate animate-expo animation-performance animation-vocabulary apple-design ask-sonner break-ui emil-design-eng find-animation-opportunities improve-animations mobile-native pick-ui-library prototype review-animations write-swift
+mattpocock/skills handoff improve-codebase-architecture writing-for-agents
+vercel-labs/agent-skills web-design-guidelines
