@@ -1,6 +1,6 @@
 # skills
 
-Como eu trabalho com agentes de código: as skills que escrevi ou adaptei, a config do Claude Code, do Codex e do Pi, e a lista das skills de terceiros que uso.
+Como eu trabalho com agentes de código: as skills que escrevi ou adaptei, e a config dos agentes (Claude Code e OpenCode), o mais neutra possível.
 
 ## Instalar só as skills
 
@@ -17,20 +17,9 @@ npx skills add pedroohaubert/skills -g --all # todas, globais, todos os agentes
 
 ```bash
 git clone https://github.com/pedroohaubert/skills ~/skills
-cd ~/skills && ./install.sh
+cd ~/skills && ./install.sh   # ou: config | skills | third-party
 ```
 
-`install.sh` aceita `config`, `skills` ou `third-party` para rodar uma parte só. `config` cria symlinks dos arquivos de `config/<agente>/` no diretório do agente (`~/.claude`, `~/.codex`, `~/.pi/agent`) e faz backup do que já existia.
+`config/<alvo>/` espelha um diretório da máquina e vira symlink lá: `agents` → `~/.agents` (instruções universais, lidas por qualquer agente), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agentes usados: Claude Code e OpenCode; o que der para ser neutro fica em `~/.agents`.
 
-## Estrutura
-
-```
-skills/                  skills próprias (o que o skills.sh instala)
-config/claude/           CLAUDE.md, settings.json, statusline, pstack-models.md
-config/codex/            AGENTS.md global do Codex
-config/pi/               settings.json do Pi
-third-party-skills.txt   skills de outros repos que eu uso: <repo> <skill>...
-install.sh               instala tudo isso numa máquina
-```
-
-Coisa pessoal (skills do trabalho, dotfiles, config com caminho de projeto) fica num repo privado com a mesma estrutura e o mesmo `install.sh`.
+Coisa pessoal (skills do trabalho, dotfiles do terminal) fica num repo privado com a mesma estrutura e o mesmo `install.sh`.

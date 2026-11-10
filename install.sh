@@ -9,13 +9,13 @@
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENTS="claude-code codex pi"
+AGENTS="claude-code opencode"
 
 agent_dir() {
   case "$1" in
+    agents) echo "$HOME/.agents" ;;
     claude) echo "$HOME/.claude" ;;
-    codex) echo "$HOME/.codex" ;;
-    pi) echo "$HOME/.pi/agent" ;;
+    opencode) echo "$HOME/.config/opencode" ;;
     *) echo "install.sh: agente desconhecido em config/: $1" >&2; return 1 ;;
   esac
 }
@@ -40,7 +40,7 @@ link_tree() {
   [ -d "$from" ] || return 0
   while IFS= read -r src; do
     link "$src" "$to/${src#"$from"/}"
-  done < <(find "$from" -type f)
+  done < <(find "$from" \( -type f -o -type l \))
 }
 
 install_config() {
