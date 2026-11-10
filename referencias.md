@@ -1,132 +1,132 @@
-# Referências
+# References
 
-O que já estudamos para montar este setup. Cada entrada traz a fonte, o que ela diz e o que tiramos dela. Entrada nova vai no fim, com a data em que foi lida.
+What we studied to build this setup. Each entry gives the source, what it says, and what we took from it. New entries go at the end, with the date we read them.
 
-## A tese
+## The thesis
 
-> O segredo não tá no prompt, tá no setup que tu faz pro agent testar o que está fazendo.
+> The secret isn't in the prompt; it's in the setup you give the agent to test what it's doing.
 
-A pirâmide invertida de onde investir, do mais forte para o mais fraco:
+The inverted pyramid of where to invest, strongest first:
 
-1. **Codebase**: boa API, arquitetura, refatoração.
-2. **Análise estática**: lint, tipos, compilador, testes, CI.
-3. **Verificação**: formal e empírica.
-4. **Prosa**: regras, skills, AGENTS.md.
-5. **Revisão humana.**
+1. **Codebase**: good API, architecture, refactoring.
+2. **Static analysis**: lint, types, compiler, tests, CI.
+3. **Verification**: formal and empirical.
+4. **Prose**: rules, skills, AGENTS.md.
+5. **Human review.**
 
-Corolários que anotamos junto:
+Corollaries we noted with it:
 
-- Módulos com API bem definida, separando a interface da implementação.
-- O mínimo possível de `.md`.
-- "Software factory" é marketing. O que funciona é boa engenharia de software e gastar tokens no lugar certo.
-- Quanto mais determinístico, melhor, e mais barato em tokens.
+- Modules with a well-defined API, separating the interface from the implementation.
+- As few `.md` files as possible.
+- "Software factory" is marketing. What works is good software engineering and spending tokens in the right place.
+- The more deterministic, the better, and the cheaper in tokens.
 
-## Artigos e papers
+## Articles and papers
 
 ### Which Claude model should you build with? (Addy Osmani, 2026-11-09)
-https://claude.dev/blog/which-claude-model-should-you-build-with/ · lido em 2026-11-10
+https://claude.dev/blog/which-claude-model-should-you-build-with/ · read 2026-11-10
 
-- Comece no Opus 5.5 em `medium`. Para tarefa bem delimitada, desça para o Sonnet; para classificar ou extrair, para o Haiku. Para o mais difícil e para runs longos sem supervisão, suba para o Fable.
-- Se o modelo não dá conta, a ordem é: dar a ele um jeito de se verificar (teste, build, script), subir o effort um nível e só então trocar de modelo.
-- Acima de `high`, um nível a mais de effort custa quase um modelo maior. Teste o modelo de cima num effort mais baixo.
-- Subagente para trabalho barato e fácil de conferir (busca, log, rodar testes) em Haiku ou Sonnet. Edição de código e julgamento ficam no modelo principal.
-- Rodar em `low` e repetir só as falhas em `high` deu a mesma precisão que tudo em `high`, por cerca de 60% do custo.
+- Start with Opus 5.5 at `medium`. For a well-bounded task, step down to Sonnet; for classifying or extracting, to Haiku. For the hardest work and long unattended runs, step up to Fable.
+- If the model can't do it, the order is: give it a way to verify itself (test, build, script), raise effort one level, and only then switch models.
+- Above `high`, one more level of effort costs almost as much as a bigger model. Test the bigger model at a lower effort.
+- Use a subagent for cheap work that is easy to check (search, logs, running tests), on Haiku or Sonnet. Code editing and judgment stay on the main model.
+- Running at `low` and repeating only the failures at `high` gave the same accuracy as everything at `high`, for about 60% of the cost.
 
-**Tiramos:** Opus `medium` como padrão, nada em `xhigh` sem medir, verificação antes de effort.
+**We took:** Opus `medium` as the default, nothing at `xhigh` without measuring, verification before effort.
 
 ### When to fold subagents into your main agent loop (Diane Sarkis, 2026-10-22)
-https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop · lido em 2026-11-10
+https://claude.com/resources/articles/building-agents-when-to-fold-subagents-into-your-main-agent-loop · read 2026-11-10
 
-- Um agente só, que carrega skills e ferramentas conforme precisa, muitas vezes ganha de um desenho com subagentes. Foi 2x mais rápido num caso real.
-- Cada subagente devolve um resumo com perdas, e encadear vários vira telefone sem fio.
-- Subagente se justifica com contexto inchado comprovado, com tarefas paralelas que precisam de contexto limpo e descartável, ou quando há ferramentas demais para escolher.
-- Separe por contexto, não por organograma. Skill para o "como a gente faz"; ferramenta para ação, dado ao vivo e limite rígido.
-- Escolha de ferramenta piora acima de 30 a 50 definições.
-- Antes de mudar a arquitetura, monte um eval pequeno de ponta a ponta e rode cada tarefa mais de uma vez.
+- One agent that loads skills and tools as it needs them often beats a design with subagents. It was 2x faster in a real case.
+- Each subagent returns a lossy summary, and chaining several turns into a game of telephone.
+- A subagent is justified by proven context bloat, by parallel tasks that need clean, disposable context, or by too many tools to choose from.
+- Split by context, not by org chart. A skill for "how we do it"; a tool for action, live data, and hard limits.
+- Tool selection gets worse past 30 to 50 definitions.
+- Before changing the architecture, build a small end-to-end eval and run each task more than once.
 
-**Tiramos:** default de um agente só; subagente apenas para leitura ampla em paralelo.
+**We took:** the default of one agent; subagents only for broad reading in parallel.
 
 ### Harness Engineering: Anatomy, Architecture, and Evolution of Coding Agents (Barbaste et al., 2026-07)
-arXiv:2609.00006 · https://arxiv.org/abs/2609.00006 · lido em 2026-11-10
+arXiv:2609.00006 · https://arxiv.org/abs/2609.00006 · read 2026-11-10
 
-- Estudo do código-fonte de 11 harnesses: Claude Code, Codex, Gemini CLI, Mistral Vibe, OpenHands, Aider, Mini-SWE-Agent, Hermes, Pi, OpenCode e OpenClaw.
-- Nenhum usa framework de agente (LangChain e afins) nem RAG com embeddings sobre código. Todos usam grep, glob, tree-sitter e arquivos `.md` de contexto.
-- Mini-SWE-Agent, com cerca de 100 linhas e só bash, fica na mesma faixa de benchmark dos sistemas grandes.
-- Num sistema que evolui o próprio harness (Lin et al.), as ferramentas deram +3,3 pontos, o middleware +2,2 e a memória +5,6. O system prompt sozinho deu **−2,3**. Estrutura pesa mais que prosa.
-- No trimestre, a regra de comportamento migrou da prosa para a configuração: o harness passa a garantir o que antes só estava escrito no prompt.
-- Skills já são mais adotadas que MCP (9 de 11 contra 8 de 11). Trate skill de terceiro como pacote: fonte confiável, revisão, quarentena.
-- Fique num agente só até ter uma fase de exploração ampla em que o contexto paralelo claramente ganha da busca em série.
+- A study of the source code of 11 harnesses: Claude Code, Codex, Gemini CLI, Mistral Vibe, OpenHands, Aider, Mini-SWE-Agent, Hermes, Pi, OpenCode, and OpenClaw.
+- None uses an agent framework (LangChain and the like) or RAG with embeddings over code. All use grep, glob, tree-sitter, and context `.md` files.
+- Mini-SWE-Agent, about 100 lines and only bash, lands in the same benchmark range as the large systems.
+- In one system that evolves its own harness (Lin et al.), tools gave +3.3 points, middleware +2.2, and memory +5.6. The system prompt alone gave **−2.3**. Structure weighs more than prose.
+- Over the quarter, behavior rules moved from prose into configuration: the harness now guarantees what used to exist only as prompt text.
+- Skills are already adopted more than MCP (9 of 11 against 8 of 11). Treat a third-party skill as a package: a trusted source, review, quarantine.
+- Stay with one agent until there is a broad exploration phase where parallel context clearly beats serial search.
 
-**Tiramos:** a evidência numérica da tese; skills de terceiros entram com curadoria.
+**We took:** the numeric evidence for the thesis; third-party skills come in curated.
 
 ### Karpathy-inspired guidelines (multica-ai, 2026-01)
-https://github.com/multica-ai/andrej-karpathy-skills · lido em 2026-11-10
+https://github.com/multica-ai/andrej-karpathy-skills · read 2026-11-10
 
-Um único `CLAUDE.md` montado a partir das observações do Karpathy sobre os erros de LLM programando: assume coisas sem checar, não pergunta, não mostra trade-off, complica demais e mexe em código que não entendeu. Quatro princípios:
+A single `CLAUDE.md` built from Karpathy's observations on LLM coding mistakes: it assumes things without checking, doesn't ask, doesn't show trade-offs, overcomplicates, and edits code it doesn't understand. Four principles:
 
-1. **Pensar antes de codar.** Explicite as suposições, mostre as leituras possíveis, diga se há caminho mais simples e pare quando estiver confuso.
-2. **Simplicidade.** O mínimo que resolve: nada de abstração de uso único, configuração não pedida ou erro para caso impossível.
-3. **Mudanças cirúrgicas.** Toda linha alterada responde ao pedido; siga o estilo existente; avise do código morto alheio, sem apagar.
-4. **Execução por objetivo.** Transforme a tarefa em critério verificável ("escreva o teste que reproduz o bug e faça passar") e itere até verificar. Do Karpathy: "não diga o que fazer, dê o critério de sucesso e deixe ele ir."
+1. **Think before coding.** State assumptions, show the possible readings, say if there is a simpler path, and stop when confused.
+2. **Simplicity.** The minimum that solves it: no single-use abstraction, no unrequested configuration, no error handling for impossible cases.
+3. **Surgical changes.** Every changed line traces to the request; follow the existing style; mention dead code you see, without deleting it.
+4. **Goal-driven execution.** Turn the task into a verifiable criterion ("write the test that reproduces the bug and make it pass") and iterate until verified. From Karpathy: "don't tell it what to do, give it the success criteria and let it go."
 
-**Tiramos:** os quatro entraram no nosso AGENTS.md universal, junto com as correções que você repete no histórico.
+**We took:** all four went into our universal AGENTS.md, along with the corrections you repeat in the history.
 
-## Design: artigos
+## Design: articles
 
-Lidos em 2026-11-10. O que entrou na skill `design` está em `skills/design/`.
+Read 2026-11-10. What went into the `design` skill is in `skills/design/`.
 
-| Fonte | O que diz | Tiramos |
+| Source | What it says | We took |
 |---|---|---|
-| [Code as the Source of Truth](https://www.tonyward.dev/articles/code-as-the-source-of-truth) (Tony Ward) | O código, e não o Figma, é a fonte da verdade. Designer prototipa com componentes reais e engenheiro leva para produção; um especialista revisa cada passo. "You don't ship slop — you ship code and designs you'd stand behind." | O design acontece no app rodando, com os componentes reais. |
-| [Practical Typography](https://practicaltypography.com/) (Matthew Butterick) | Livro online de tipografia. Corpo de texto na web de 15 a 25 px, entrelinha de 1,2 a 1,45, linha de 45 a 90 caracteres, 5 a 12% de espaçamento em caixa alta, aspas curvas. | `skills/design/typography.md` |
-| [How to choose a UI font (and 10 Inter alternatives)](https://yeptype.com/article/inter-alternatives) (Yep! Type) | Fonte de interface precisa de métricas centradas na caixa alta e altura-x por volta de 75%, senão o texto fica baixo no botão. Alternativas: Innovator Grotesk, Universal Sans, Plain, SwissNow, Muoto, Aktiv Grotesk, Akkurat, Basier, CoFo Sans, Unifora. | `skills/design/typography.md` |
-| [lessons.design](https://lessons.design/) | **Não lido:** a página só devolveu o título, o conteúdo não carregou. | Pendente. |
+| [Code as the Source of Truth](https://www.tonyward.dev/articles/code-as-the-source-of-truth) (Tony Ward) | Code, not Figma, is the source of truth. A designer prototypes with real components and an engineer takes them to production; an expert reviews each step. "You don't ship slop — you ship code and designs you'd stand behind." | Design happens in the running app, with the real components. |
+| [Practical Typography](https://practicaltypography.com/) (Matthew Butterick) | Online typography book. Web body text 15 to 25 px, line height 1.2 to 1.45, line length 45 to 90 characters, 5 to 12% letterspacing in all caps, curly quotes. | `skills/design/typography.md` |
+| [How to choose a UI font (and 10 Inter alternatives)](https://yeptype.com/article/inter-alternatives) (Yep! Type) | A UI font needs cap-centered metrics and an x-height around 75%, or the text sits low in buttons. Alternatives: Innovator Grotesk, Universal Sans, Plain, SwissNow, Muoto, Aktiv Grotesk, Akkurat, Basier, CoFo Sans, Unifora. | `skills/design/typography.md` |
+| [lessons.design](https://lessons.design/) | **Not read:** the page returned only the title, the content did not load. | Pending. |
 
-## Design: componentes e ferramentas
+## Design: components and tools
 
-Lidos em 2026-11-10 pelos `llms.txt`. Todos estão em `skills/design/libraries.md`, com o jeito de instalar.
+Read 2026-11-10 through their `llms.txt` files. All are in `skills/design/libraries.md`, with install instructions.
 
-| Fonte | O que é |
+| Source | What it is |
 |---|---|
-| [interior.dev](https://www.interior.dev/llms.txt) (favorito) | Microinterações em React com Motion, para o feedback depois do clique: copy button, loading button, hold to confirm, modal, drawer. MIT, com registry shadcn. |
-| [Dice UI](https://diceui.com/llms.txt) (favorito) | Componentes acessíveis que estendem o shadcn, sobre Base UI ou Radix: data table, data grid, kanban, combobox, file upload, stepper, tour. |
-| [aicss.dev](https://www.aicss.dev/llms.txt) | Componentes para interface de agentes de IA: estado de pensamento, tool calls, texto em streaming, citações, file diff. 20 componentes, 15 gratuitos. |
-| [Fancy Components](https://www.fancycomponents.dev/llms.txt) | Efeitos para landing pages e páginas artísticas: animações de texto, image trail, física, filtros SVG. Registry shadcn `@fancy`. |
-| [bencho.dev](https://bencho.dev/llms.txt) | 165 blocos interativos artísticos: dynamic island, magnifying dock, card stack. MIT, copia-se o código. |
-| [loading.dev](https://loading.dev/llms.txt) | Spinners de loading para React 19+, pacote `loading-dev`. |
-| [ascii.rest](https://ascii.rest/llms.txt) | Arte e banners em ASCII animados, pacote `ascii.rest`. |
-| [microinteractions.dev](https://microinteractions.dev/llms.txt) | Estudos de microinterações com demo e notas de timing (em construção): text swap button, hold to confirm, tab indicator, tooltip que respeita a borda. Citado em `skills/design/motion.md`. |
-| [Shoogle](https://shoogle.dev/mcp/shoogle-skills) | Busca de componentes em registries shadcn, por MCP (`https://mcp.shoogle.dev/mcp`, sem conta) ou pela CLI do shadcn (`search @shoogle -q`). É o plano B quando as bibliotecas preferidas não cobrem. Registrado em `mcp-servers.txt` e no `opencode.jsonc`. |
+| [interior.dev](https://www.interior.dev/llms.txt) (favourite) | Micro-interactions in React with Motion, for feedback after a click: copy button, loading button, hold to confirm, modal, drawer. MIT, with a shadcn registry. |
+| [Dice UI](https://diceui.com/llms.txt) (favourite) | Accessible components that extend shadcn, on Base UI or Radix: data table, data grid, kanban, combobox, file upload, stepper, tour. |
+| [aicss.dev](https://www.aicss.dev/llms.txt) | Components for AI agent interfaces: thinking state, tool calls, streaming text, citations, file diff. 20 components, 15 free. |
+| [Fancy Components](https://www.fancycomponents.dev/llms.txt) | Effects for landing and artistic pages: text animations, image trail, physics, SVG filters. shadcn registry `@fancy`. |
+| [bencho.dev](https://bencho.dev/llms.txt) | 165 artistic interactive blocks: dynamic island, magnifying dock, card stack. MIT; you copy the code. |
+| [loading.dev](https://loading.dev/llms.txt) | Loading spinners for React 19+, package `loading-dev`. |
+| [ascii.rest](https://ascii.rest/llms.txt) | Animated ASCII art and banners, package `ascii.rest`. |
+| [microinteractions.dev](https://microinteractions.dev/llms.txt) | Micro-interaction studies with demos and timing notes (work in progress): text swap button, hold to confirm, tab indicator, tooltip that respects the edge. Cited in `skills/design/motion.md`. |
+| [Shoogle](https://shoogle.dev/mcp/shoogle-skills) | Component search across shadcn registries, through MCP (`https://mcp.shoogle.dev/mcp`, no account) or the shadcn CLI (`search @shoogle -q`). It is the fallback when the preferred libraries don't cover a need. Registered in `mcp-servers.txt` and `opencode.jsonc`. |
 
 ## Posts
 
-### "O segredo está no prompt" (post, autor não registrado)
+### "The secret is in the prompt" (post, author not recorded)
 
-O contraponto. Diga o que você quer; se não der certo, pergunte por que e como melhorar; mande o agente pesquisar no Google, no Stack Overflow e no GitHub, porque "99% dos problemas se resolvem lá".
+The counterpoint. Say what you want; if it doesn't work, ask why and how to improve; have the agent search Google, Stack Overflow, and GitHub, because "99% of your problems are solved there".
 
-**Tiramos:** guardamos como contraste. Pesquisar na web continua útil, mas não substitui o agente conseguir testar o próprio trabalho.
+**We took:** kept as the contrast. Searching the web is still useful, but it doesn't replace the agent being able to test its own work.
 
-### Ensinar o agente a "design" (thread, autor não registrado)
+### Teaching the agent "design" (thread, author not recorded)
 
-- O agente desenhou um popup de onboarding em duas direções no canvas: A, um tour de três passos; B, uma animação em loop.
-- Escreveu o que cada uma perde e escolheu B, porque A somava "dois cliques extras num anúncio que a maioria fecha rápido".
-- O feedback foi dado como usuário, descrevendo o sintoma: "não dá para ver qual está destacado", "a espera é horrível". O agente achou a solução (a linha virou barra de progresso).
-- A regra: explorar direções, raciocinar e iterar a cada passo antes de mandar para revisão. É o chain of thought aplicado ao design.
+- The agent drew an onboarding popup in two directions on a canvas: A, a three-step tour; B, a looping animation.
+- It wrote what each one loses and chose B, because A added "two extra clicks on an announcement most people close quickly".
+- The feedback described the symptom as a user: "I can't tell which one is highlighted", "the wait is horrible". The agent found the fix (the row became a progress bar).
+- The rule: explore directions, reason, and iterate at every step before sending for review. It is chain of thought applied to design.
 
-**Tiramos:** o canvas é a superfície de verificação do design. Feedback descreve o sintoma, não a solução.
+**We took:** the canvas is the design's verification surface. Feedback describes the symptom, not the fix.
 
-### Projeto que fica lento com o tempo (pergunta + respostas)
+### A project that gets slow over time (question + answers)
 
-Pergunta: "o que levava 10 minutos para o Claude 5.5 agora leva 40; como evitar?" Respostas: módulos com API bem definida (`api:impl`) e o mínimo possível de `.md`.
+Question: "what took 10 minutes with Claude 5.5 now takes 40; how do I prevent it?" Answers: modules with a well-defined API (`api:impl`) and as few `.md` files as possible.
 
-**Tiramos:** fronteiras pequenas para o agente ler a interface e não a implementação; um comando único e rápido de checagem; apagar `.md` velho; sessão nova por unidade de trabalho; erro repetido vira checagem automática.
+**We took:** small boundaries so the agent reads the interface, not the implementation; one fast command that runs all checks; delete stale `.md`; a fresh session per unit of work; a repeated error becomes an automatic check.
 
-## Repositórios
+## Repositories
 
-| Repo | O que é | Status no setup |
+| Repo | What it is | Status in the setup |
 |---|---|---|
-| [cursor/plugins › pstack](https://github.com/cursor/plugins/tree/main/pstack) | Playbooks e skills do poteto. O guia (`docs/guide/`) põe verificação no centro: `create-verification-skill`, `correct` (erro repetido vira arquitetura, depois tipo, depois lint, depois teste, e só por último texto), `benchmark-checklist`, princípios nomeados para guiar o agente. | Em uso via fork `michael-denyer/pstack-claude`. A curar: manter o que é verificação, rever o que dispara muitos subagentes e o hook de sessão. |
-| [emilkowalski/skills](https://github.com/emilkowalski/skills) | Skills de design e animação (animate, review-animations, apple-design, break-ui…). Antes se chamava `emilkowalski/skill`; agora tem também `choreograph`, `gestures` e `remove-animations`. | Copiado para dentro da skill `design` (`skills/design/emil/`, atualizado por `sync-emil.sh`). Não fica mais instalado à parte. |
-| [humanlayer/skills](https://github.com/humanlayer/skills) | `rpi` (pesquisa → plano → implementação em sessões novas), `design-control-loop` (loop agendado com sensor, controlador e atuador que abre PRs pequenos), `improve-claude-md`, `visual-pr`, `show-me`. | Não instalado. `design-control-loop` é candidato para melhoria contínua com sensor determinístico. |
-| [blader/humanizer](https://github.com/blader/humanizer) | Skill que tira marcas de texto de IA: 26 padrões com exemplos de antes e depois, baseados no "Signs of AI writing" da Wikipedia. MIT. | Copiada inteira para `skills/writing/humanizer/` (atualizada por `sync-humanizer.sh`); as nossas adaptações ficam em `skills/writing/tells.md`. |
-| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "O dev sênior preguiçoso": escrever só o que a tarefa precisa, reusar o que o repo já tem, sem cortar validação, erro, segurança ou acessibilidade. Benchmark próprio: −53% de código, −45% de tokens, 98% da lógica de risco com teste (68% sem). Tem `/ponytail-review` e `/ponytail-audit`. | Instalado como plugin no Claude Code (`claude-plugins.txt`) e listado em `opencode.jsonc`. O `code.md` manda seguir. |
+| [cursor/plugins › pstack](https://github.com/cursor/plugins/tree/main/pstack) | The poteto skills and playbooks. The guide (`docs/guide/`) puts verification at the center: `create-verification-skill`, `correct` (a repeated error becomes architecture, then a type, then a lint, then a test, and only last a text rule), `benchmark-checklist`, named principles that guide the agent. | In use through the fork `michael-denyer/pstack-claude`. To curate: keep the verification parts, review the parts that trigger many subagents and the session hook. |
+| [emilkowalski/skills](https://github.com/emilkowalski/skills) | Design and animation skills (animate, review-animations, apple-design, break-ui…). It used to be `emilkowalski/skill`; it now also has `choreograph`, `gestures`, and `remove-animations`. | Copied into the `design` skill (`skills/design/emil/`, updated by `sync-emil.sh`). No longer installed separately. |
+| [humanlayer/skills](https://github.com/humanlayer/skills) | `rpi` (research → plan → implementation in fresh sessions), `design-control-loop` (a scheduled loop with a sensor, a controller, and an actuator that opens small PRs), `improve-claude-md`, `visual-pr`, `show-me`. | Not installed. `design-control-loop` is a candidate for continuous improvement with a deterministic sensor. |
+| [blader/humanizer](https://github.com/blader/humanizer) | A skill that removes AI-writing marks: 26 patterns with before and after examples, based on Wikipedia's "Signs of AI writing". MIT. | Copied whole into `skills/writing/humanizer/` (updated by `sync-humanizer.sh`); our adaptations are in `skills/writing/tells.md`. |
+| [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "The lazy senior dev": write only what the task needs, reuse what the repo already has, never cut validation, error handling, security, or accessibility. Its own benchmark: −53% code, −45% tokens, 98% of risky logic with a test (68% without). Has `/ponytail-review` and `/ponytail-audit`. | Installed as a Claude Code plugin (`claude-plugins.txt`) and listed in `opencode.jsonc`. `code.md` tells the agent to follow it. |

@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
-# Instala este repo na máquina. Roda igual no repo público e no privado.
-#   ./install.sh              tudo o que existir neste repo
-#   ./install.sh config       linka config/<agente>/* no diretório do agente
-#   ./install.sh dotfiles     linka dotfiles/home/* em ~ e dotfiles/config/* em ~/.config
-#   ./install.sh skills       instala skills/ globalmente via skills.sh
-#   ./install.sh third-party  instala as skills listadas em third-party-skills.txt
-#   ./install.sh plugins      instala no Claude Code os plugins de claude-plugins.txt
-#   ./install.sh mcp          registra no Claude Code os servidores MCP de mcp-servers.txt
-#                             (os do OpenCode ficam em config/opencode/opencode.jsonc)
-# Tudo que já existe no destino vai para <arquivo>.bak.<data> antes do link.
+# Installs this repo on the machine. Runs the same in the public and private repos.
+#   ./install.sh              everything this repo has
+#   ./install.sh config       links config/<agent>/* into the agent's directory
+#   ./install.sh dotfiles     links dotfiles/home/* into ~ and dotfiles/config/* into ~/.config
+#   ./install.sh skills       installs skills/ globally via skills.sh
+#   ./install.sh third-party  installs the skills listed in third-party-skills.txt
+#   ./install.sh plugins      installs the Claude Code plugins listed in claude-plugins.txt
+#   ./install.sh mcp          registers the MCP servers in mcp-servers.txt with Claude Code
+#                             (OpenCode's live in config/opencode/opencode.jsonc)
+# Anything already at the destination is moved to <file>.bak.<date> before linking.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -76,7 +76,7 @@ install_third_party() {
 
 install_mcp() {
   [ -f "$REPO/mcp-servers.txt" ] || return 0
-  command -v claude >/dev/null || { echo "claude CLI não encontrado; pulei o MCP"; return 0; }
+  command -v claude >/dev/null || { echo "claude CLI not found; skipped MCP"; return 0; }
   grep -vE '^\s*(#|$)' "$REPO/mcp-servers.txt" | while read -r name url; do
     if claude mcp get "$name" >/dev/null 2>&1; then
       echo "ok      mcp $name"
@@ -88,7 +88,7 @@ install_mcp() {
 
 install_plugins() {
   [ -f "$REPO/claude-plugins.txt" ] || return 0
-  command -v claude >/dev/null || { echo "claude CLI não encontrado; pulei os plugins"; return 0; }
+  command -v claude >/dev/null || { echo "claude CLI not found; skipped plugins"; return 0; }
   grep -vE '^\s*(#|$)' "$REPO/claude-plugins.txt" | while read -r marketplace plugin; do
     claude plugin marketplace add "$marketplace" </dev/null || true
     claude plugin install "$plugin" </dev/null || true

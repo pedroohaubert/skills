@@ -1,27 +1,27 @@
-# Modelos
+# Models
 
-Qual modelo para quê. Fonte: [Which Claude model should you build with](https://claude.dev/blog/which-claude-model-should-you-build-with/) e os limites do OpenCode Go (ver `referencias.md`).
+Which model for what. Sources: [Which Claude model should you build with](https://claude.dev/blog/which-claude-model-should-you-build-with/) and the OpenCode Go limits (see `referencias.md`).
 
 ## Claude Code
 
-| Uso | Modelo | Como está configurado |
+| Use | Model | How it is configured |
 |---|---|---|
-| Padrão: engenharia do dia a dia, debug, feature | Opus 5.5 no médio | `model: opus` e `effortLevel: medium` em `~/.claude/settings.json` |
-| Tarefa bem delimitada, texto, revisão repetida | Sonnet 5.5 no médio | `/model sonnet` quando quiser |
-| Busca no código e na documentação | Haiku 5.5 | subagente `Explore` em `config/claude/agents/` |
-| Rodar testes, build, lint e ler logs | Haiku 5.5 | subagente `runner` em `config/claude/agents/` |
-| Migração grande, arquitetura, trabalho longo sem supervisão | Fable 5.2 no médio | `/model fable`, enquanto o plano der acesso |
+| Default: everyday engineering, debugging, features | Opus 5.5 at medium | `model: opus` and `effortLevel: medium` in `~/.claude/settings.json` |
+| Well-bounded task, text, repeated review | Sonnet 5.5 at medium | `/model sonnet` when you want it |
+| Searching code and documentation | Haiku 5.5 | subagent `Explore` in `config/claude/agents/` |
+| Running tests, build, lint, and reading logs | Haiku 5.5 | subagent `runner` in `config/claude/agents/` |
+| Large migration, architecture, long unattended work | Fable 5.2 at medium | `/model fable`, while the plan gives access |
 
-Antes de subir o esforço, dê ao agente um jeito de se verificar. Acima de `high`, vale mais o modelo de cima num esforço menor. Troque de modelo numa pausa natural: a primeira resposta no modelo novo paga o cache da conversa inteira.
+Before raising effort, give the agent a way to verify itself. Above `high`, the bigger model at a lower effort is worth more. Switch models at a natural pause: the first reply on the new model pays the cache for the whole conversation.
 
-O conselheiro (`advisorModel`) está em Fable. Quando o Fable sair do plano, desligue com `/advisor`.
+The advisor (`advisorModel`) is set to Fable. When Fable leaves the plan, turn it off with `/advisor`.
 
-## OpenCode (tarefas menores, plano Go)
+## OpenCode (smaller tasks, Go plan)
 
-| Uso | Modelo | Por quê |
+| Use | Model | Why |
 |---|---|---|
-| Padrão: debug, edição em vários arquivos, busca | `opencode-go/deepseek-v4.1-flash` | Teto de US$ 100 por mês no Go, o maior dos três, e rápido |
-| Interface, texto, edição pequena que precisa sair pronta | `opencode-go/claude-haiku-5-5` | Melhor nota em código pronto para merge e em UI; o teto é de US$ 15 por mês, então use de propósito |
-| Muitos passos de chamada de ferramenta | Muse Ember, quando entrar no Go | Feito para tool calls; hoje só existe na API da Meta |
+| Default: debugging, multi-file edits, search | `opencode-go/deepseek-v4.1-flash` | US$ 100 monthly cap on Go, the largest of the three, and fast |
+| UI, text, small edits that must come out ready | `opencode-go/claude-haiku-5-5` | Best score on merge-ready code and on UI; its cap is US$ 15 a month, so use it on purpose |
+| Many tool-call steps | Muse Ember, once it is on Go | Built for tool calls; today it exists only on Meta's API |
 
-O modelo padrão está em `config/opencode/opencode.jsonc`. Pendência: o `opencode run` ignorou essa chave no teste e abriu num modelo gratuito; com `-m opencode-go/deepseek-v4.1-flash` funciona.
+The default model is set in `config/opencode/opencode.jsonc`. Open issue: in a test, `opencode run` ignored that key and opened a free model; with `-m opencode-go/deepseek-v4.1-flash` it works.

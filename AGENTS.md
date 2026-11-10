@@ -3,7 +3,7 @@
 Public repo with Pedro's skills and agent setup, installable with `npx skills add pedroohaubert/skills`. A private twin, `pedroohaubert/skills-private`, has the same layout and the same `install.sh`.
 
 - Public holds what is generic and serves software development. Personal or work skills, dotfiles, and anything naming a project path, client, colleague, internal URL, corporate email, or credential go to the private repo.
-- Every file an agent reads (skills, AGENTS.md, playbooks, config) is written in English. Human-facing docs (README, referencias.md) stay in Portuguese.
+- Everything in this repo is written in English, docs included. The only Portuguese is what teaches the `writing` skill to write Portuguese: its voice profile, examples, and phrase lists (`skills/writing/voice.md`, `tells.md`, `public.md`, `message.md`, `cases/`).
 - Load the `writing-for-agents` skill before writing or editing any of those files.
 - Skills live in `skills/<name>/SKILL.md`, with `name` matching the folder. `SKILL.md` exists only under `skills/`: skills.sh scans the whole repo and installs any it finds.
 - `config/<target>/` mirrors a machine directory: `agents` → `~/.agents`, `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agent-neutral material goes in `agents`; config for one agent goes in its own folder. A new target needs a line in `agent_dir` in `install.sh`.

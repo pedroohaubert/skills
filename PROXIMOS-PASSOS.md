@@ -1,17 +1,17 @@
-# Próximos passos
+# Next steps
 
-Estado em 2026-11-10. A árvore está ativa na máquina (`./install.sh config`), com as skills `design` e `writing`, os plugins pstack e Ponytail (Claude Code e OpenCode; no OpenCode o pstack vem do plugin `github:michael-denyer/pstack-claude#main`), e a config de modelos em `modelos.md`. Modelo padrão do OpenCode confirmado em sessão nova: DeepSeek V4.1 Flash.
+State as of 2026-11-10. The instruction tree is active on this machine (`./install.sh config`), with the `design` and `writing` skills, the pstack and Ponytail plugins (Claude Code and OpenCode; on OpenCode, pstack comes from the plugin `github:michael-denyer/pstack-claude#main`), and the model config in `modelos.md`. The OpenCode default model was confirmed in a fresh session: DeepSeek V4.1 Flash.
 
-## A fazer
+## To do
 
-1. **Engordar a parte de código.** Hoje `code.md` e os playbooks são arquivos pequenos. A ideia é levar parte disso para skills próprias, mais opinativas, como foi feito com `design` e `writing`: como eu quero que o código seja escrito, estruturado e revisado, com exemplos. Os princípios do pstack e o Ponytail são a base; falta a minha camada por cima.
-2. **Testar os playbooks de código às cegas** (feature, refactor, investigation, pull-request), como foi feito com a `writing`. O de PR é o que mais depende de gosto.
-3. **Conselheiro:** `advisorModel` aponta para o Fable. Quando o Fable sair do plano, desligar com `/advisor`.
-4. **Muse Ember:** incluir em `modelos.md` e no OpenCode quando entrar no plano Go.
-5. **lessons.design:** a página não carregou; ler e registrar em `referencias.md`.
-6. **Skills paradas no privado:** `apontamento-horas` e `limpeza-mac` ainda estão em português e fora do padrão novo.
-7. **Trocar credenciais** que aparecem em texto puro no histórico de prompts e no `~/.codex/config.toml`.
+1. **Grow the code part.** Today `code.md` and the playbooks are small files. The idea is to move part of it into our own, more opinionated skills, as was done with `design` and `writing`: how the code should be written, structured, and reviewed, with examples. The pstack principles and Ponytail are the base; my own layer on top is still missing.
+2. **Blind-test the code playbooks** (feature, refactor, investigation, pull-request), as was done for `writing`. The PR one depends most on taste.
+3. **Advisor:** `advisorModel` points at Fable. When Fable leaves the plan, turn it off with `/advisor`.
+4. **Muse Ember:** add it to `modelos.md` and to OpenCode when it joins the Go plan.
+5. **lessons.design:** the page didn't load; read it and record it in `referencias.md`.
+6. **Stalled private skills:** `apontamento-horas` and `limpeza-mac` are still in Portuguese and don't follow the new standard.
+7. **Rotate credentials** that appear in plain text in the prompt history and in `~/.codex/config.toml`.
 
-## Como retomar
+## How to resume
 
-Leia `AGENTS.md` (regras do repo), `referencias.md` (o que embasou cada decisão) e este arquivo. Regra de trabalho: perguntar antes de escrever, testar skill com um agente novo antes de dar por pronta, e rodar `./check-tree.sh` depois de mexer em `config/agents/`.
+Read `AGENTS.md` (repo rules), `referencias.md` (what each decision rests on), and this file. Working rule: ask before writing, test a skill with a fresh agent before calling it done, and run `./check-tree.sh` after changing `config/agents/`.

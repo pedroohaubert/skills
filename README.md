@@ -1,58 +1,58 @@
 # skills
 
-Como eu trabalho com agentes de código: as skills que escrevi ou adaptei e a config do Claude Code e do OpenCode, o mais neutra possível.
+How I work with coding agents: the skills I wrote or adapted, and the config for Claude Code and OpenCode, kept as neutral as possible.
 
-## Instalar só as skills
+## Install only the skills
 
 ```bash
-npx skills add pedroohaubert/skills          # escolhe quais
-npx skills add pedroohaubert/skills -g --all # todas, globais, todos os agentes
+npx skills add pedroohaubert/skills          # pick which ones
+npx skills add pedroohaubert/skills -g --all # all of them, global, all agents
 ```
 
-Este repo tem duas skills:
+This repo has two skills:
 
-| Skill | Para quê |
+| Skill | What it does |
 |---|---|
-| `design` | Roteador de design e interface: processo, bibliotecas preferidas, tipografia e as skills do Emil Kowalski como subarquivos |
-| `writing` | Escreve, melhora ou corrige texto para pessoas, na sua voz e sem cara de IA: recado para Teams, Slack ou e-mail, perguntas para o negócio, post, artigo, bio, título. O texto final vai para a área de transferência |
+| `design` | Router for design and UI: process, preferred libraries, typography, and Emil Kowalski's skills as subfiles |
+| `writing` | Writes, improves, or corrects text for people, in my voice and free of AI tells: messages for Teams, Slack, or email, questions for the business, posts, articles, bios, titles. The final text goes to the clipboard |
 
-## Skills de terceiros e plugins
+## Third-party skills and plugins
 
-Estas não ficam copiadas aqui. Quem instala é o `install.sh`, a partir de `third-party-skills.txt` e `claude-plugins.txt`:
+These are not copied here. `install.sh` installs them from `third-party-skills.txt` and `claude-plugins.txt`:
 
-- **pstack** (plugin, Claude Code e OpenCode): método de trabalho com princípios, playbooks e verificação. Traz `pstack-technical-writing`, que cuida de documentação, PR e mensagem de commit. Para texto que vai para uma pessoa, use `writing`.
-- **Ponytail** (plugin, Claude Code e OpenCode): faz o agente escrever o menor código que resolve a tarefa.
-- **Matt Pocock:** `writing-for-agents` (para escrever skills e instruções de agente) e `handoff`.
-- **Be Ambitious:** `be-ambitious`, para transformar um pedido em uma versão mais profunda dele.
+- **pstack** (plugin, Claude Code and OpenCode): a working method with principles, playbooks, and verification. It ships `pstack-technical-writing`, which covers documentation, PRs, and commit messages. For text meant for a person, use `writing`.
+- **Ponytail** (plugin, Claude Code and OpenCode): makes the agent write the smallest code that solves the task.
+- **Matt Pocock:** `writing-for-agents` (for writing skills and agent instructions) and `handoff`.
+- **Be Ambitious:** `be-ambitious`, to turn a request into a deeper version of itself.
 
-## Instalar o setup inteiro com um agente
+## Install with an agent
 
-Copie o texto abaixo e cole em um agente de código (Claude Code ou OpenCode), numa pasta vazia:
+Copy the text below and paste it into a coding agent (Claude Code or OpenCode), in an empty folder:
 
 ```text
-Quero instalar na minha máquina o setup de agentes do repositório https://github.com/pedroohaubert/skills. Siga estes passos e me avise de cada um:
+I want to install the agent setup from the repository https://github.com/pedroohaubert/skills on my machine. Follow these steps and tell me about each one:
 
-1. Confira se tenho git, node e npx. Se faltar algum, pare e me diga o que instalar.
-2. Clone o repositório em ~/skills. Se a pasta já existir, não apague nada: me pergunte antes.
-3. Dentro de ~/skills, rode ./install.sh. Ele cria links nas pastas ~/.agents, ~/.claude e ~/.config/opencode e guarda com o sufixo .bak.<data> tudo que já existia nesses lugares. Se o comando `claude` ou `opencode` não existir, pule os passos de plugins e MCP e me diga.
-4. Leia o arquivo config/opencode/opencode.jsonc. O modelo padrão é opencode-go/deepseek-v4.1-flash. Se eu não tiver esse plano, me pergunte qual modelo usar e troque antes de seguir.
-5. Confira a instalação: `ls -la ~/.agents ~/.claude/CLAUDE.md ~/.config/opencode/opencode.jsonc` (os links devem apontar para ~/skills), `./check-tree.sh` deve passar, e `npx skills add ~/skills --list` deve listar as skills.
-6. Me mostre um resumo: o que foi linkado, o que foi guardado em .bak, e qualquer erro. Não apague nem altere arquivos que não sejam os que o install.sh cria.
+1. Check that I have git, node, and npx. If any is missing, stop and tell me what to install.
+2. Clone the repository into ~/skills. If the folder already exists, don't delete anything: ask me first.
+3. Inside ~/skills, run ./install.sh. It creates links in ~/.agents, ~/.claude, and ~/.config/opencode, and keeps everything that already existed there with the suffix .bak.<date>. If the `claude` or `opencode` command doesn't exist, skip the plugin and MCP steps and tell me.
+4. Read config/opencode/opencode.jsonc. The default model is opencode-go/deepseek-v4.1-flash. If I don't have that plan, ask me which model to use and change it before going on.
+5. Verify the install: `ls -la ~/.agents ~/.claude/CLAUDE.md ~/.config/opencode/opencode.jsonc` (the links must point into ~/skills), `./check-tree.sh` must pass, and `npx skills add ~/skills --list` must list the skills.
+6. Show me a summary: what got linked, what got saved in .bak, and any error. Don't delete or change files other than the ones install.sh creates.
 ```
 
-O agente faz a instalação e te mostra o que mudou. Se algo der errado, os arquivos antigos continuam guardados com o sufixo `.bak`.
+The agent does the install and shows you what changed. If something goes wrong, the old files are still saved with the `.bak` suffix.
 
-## Instalar o setup inteiro na mão
+## Install by hand
 
 ```bash
 git clone https://github.com/pedroohaubert/skills ~/skills
-cd ~/skills && ./install.sh   # ou: config | skills | third-party | plugins | mcp
+cd ~/skills && ./install.sh   # or: config | skills | third-party | plugins | mcp
 ```
 
-`config/<alvo>/` espelha um diretório da máquina e vira symlink lá: `agents` → `~/.agents` (instruções que qualquer agente lê), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. O que é de um agente só fica na pasta dele.
+`config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Config that belongs to one agent stays in that agent's folder.
 
-Para o OpenCode, o `opencode.jsonc` deste repo carrega os plugins (Ponytail e pstack) e os servidores MCP. Para o Claude Code, o `plugins` instala o pstack e o Ponytail a partir de `claude-plugins.txt`.
+For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt`.
 
-As fontes que embasam o setup ficam em [referencias.md](referencias.md). A escolha de modelo por tipo de tarefa está em [modelos.md](modelos.md). O que falta fazer está em [PROXIMOS-PASSOS.md](PROXIMOS-PASSOS.md).
+The sources behind the setup are in [referencias.md](referencias.md). The model choice for each kind of task is in [modelos.md](modelos.md). What is still to do is in [PROXIMOS-PASSOS.md](PROXIMOS-PASSOS.md).
 
-Coisa pessoal (skills do trabalho, dotfiles do terminal) fica num repo privado com a mesma estrutura e o mesmo `install.sh`.
+Personal material (work skills, terminal dotfiles) lives in a private repo with the same layout and the same `install.sh`.
