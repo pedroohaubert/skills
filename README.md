@@ -11,13 +11,14 @@ npx skills add pedroohaubert/skills -g --all # todas, globais, todos os agentes
 
 | Skill | Para quê |
 |---|---|
+| `design` | Roteador de design e interface: processo, bibliotecas preferidas, tipografia e as skills do Emil Kowalski como subarquivos |
 | `business-decision-questionnaire` | Transforma as decisões de um plano, ticket ou PR numa mensagem que um especialista do negócio responde de uma vez |
 
 ## Instalar o setup inteiro
 
 ```bash
 git clone https://github.com/pedroohaubert/skills ~/skills
-cd ~/skills && ./install.sh   # ou: config | skills | third-party
+cd ~/skills && ./install.sh   # ou: config | skills | third-party | mcp
 ```
 
 `config/<alvo>/` espelha um diretório da máquina e vira symlink lá: `agents` → `~/.agents` (instruções universais, lidas por qualquer agente), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agentes usados: Claude Code e OpenCode; o que der para ser neutro fica em `~/.agents`.

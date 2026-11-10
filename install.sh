@@ -5,6 +5,8 @@
 #   ./install.sh dotfiles     linka dotfiles/home/* em ~ e dotfiles/config/* em ~/.config
 #   ./install.sh skills       instala skills/ globalmente via skills.sh
 #   ./install.sh third-party  instala as skills listadas em third-party-skills.txt
+#   ./install.sh mcp          registra no Claude Code os servidores MCP de mcp-servers.txt
+#                             (os do OpenCode ficam em config/opencode/opencode.jsonc)
 # Tudo que já existe no destino vai para <arquivo>.bak.<data> antes do link.
 set -euo pipefail
 
@@ -71,11 +73,24 @@ install_third_party() {
   done
 }
 
+install_mcp() {
+  [ -f "$REPO/mcp-servers.txt" ] || return 0
+  command -v claude >/dev/null || { echo "claude CLI não encontrado; pulei o MCP"; return 0; }
+  grep -vE '^\s*(#|$)' "$REPO/mcp-servers.txt" | while read -r name url; do
+    if claude mcp get "$name" >/dev/null 2>&1; then
+      echo "ok      mcp $name"
+    else
+      claude mcp add "$name" --transport http --scope user "$url" </dev/null
+    fi
+  done
+}
+
 case "${1:-all}" in
   config) install_config ;;
   dotfiles) install_dotfiles ;;
   skills) install_skills ;;
   third-party) install_third_party ;;
-  all) install_config; install_dotfiles; install_skills; install_third_party ;;
-  *) echo "uso: $0 [all|config|dotfiles|skills|third-party]" >&2; exit 1 ;;
+  mcp) install_mcp ;;
+  all) install_config; install_dotfiles; install_skills; install_third_party; install_mcp ;;
+  *) echo "uso: $0 [all|config|dotfiles|skills|third-party|mcp]" >&2; exit 1 ;;
 esac

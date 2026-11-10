@@ -71,6 +71,33 @@ Um único `CLAUDE.md` montado a partir das observações do Karpathy sobre os er
 
 **Tiramos:** os quatro entraram no nosso AGENTS.md universal, junto com as correções que você repete no histórico.
 
+## Design: artigos
+
+Lidos em 2026-11-10. O que entrou na skill `design` está em `skills/design/`.
+
+| Fonte | O que diz | Tiramos |
+|---|---|---|
+| [Code as the Source of Truth](https://www.tonyward.dev/articles/code-as-the-source-of-truth) (Tony Ward) | O código, e não o Figma, é a fonte da verdade. Designer prototipa com componentes reais e engenheiro leva para produção; um especialista revisa cada passo. "You don't ship slop — you ship code and designs you'd stand behind." | O design acontece no app rodando, com os componentes reais. |
+| [Practical Typography](https://practicaltypography.com/) (Matthew Butterick) | Livro online de tipografia. Corpo de texto na web de 15 a 25 px, entrelinha de 1,2 a 1,45, linha de 45 a 90 caracteres, 5 a 12% de espaçamento em caixa alta, aspas curvas. | `skills/design/typography.md` |
+| [How to choose a UI font (and 10 Inter alternatives)](https://yeptype.com/article/inter-alternatives) (Yep! Type) | Fonte de interface precisa de métricas centradas na caixa alta e altura-x por volta de 75%, senão o texto fica baixo no botão. Alternativas: Innovator Grotesk, Universal Sans, Plain, SwissNow, Muoto, Aktiv Grotesk, Akkurat, Basier, CoFo Sans, Unifora. | `skills/design/typography.md` |
+| [lessons.design](https://lessons.design/) | **Não lido:** a página só devolveu o título, o conteúdo não carregou. | Pendente. |
+
+## Design: componentes e ferramentas
+
+Lidos em 2026-11-10 pelos `llms.txt`. Todos estão em `skills/design/libraries.md`, com o jeito de instalar.
+
+| Fonte | O que é |
+|---|---|
+| [interior.dev](https://www.interior.dev/llms.txt) (favorito) | Microinterações em React com Motion, para o feedback depois do clique: copy button, loading button, hold to confirm, modal, drawer. MIT, com registry shadcn. |
+| [Dice UI](https://diceui.com/llms.txt) (favorito) | Componentes acessíveis que estendem o shadcn, sobre Base UI ou Radix: data table, data grid, kanban, combobox, file upload, stepper, tour. |
+| [aicss.dev](https://www.aicss.dev/llms.txt) | Componentes para interface de agentes de IA: estado de pensamento, tool calls, texto em streaming, citações, file diff. 20 componentes, 15 gratuitos. |
+| [Fancy Components](https://www.fancycomponents.dev/llms.txt) | Efeitos para landing pages e páginas artísticas: animações de texto, image trail, física, filtros SVG. Registry shadcn `@fancy`. |
+| [bencho.dev](https://bencho.dev/llms.txt) | 165 blocos interativos artísticos: dynamic island, magnifying dock, card stack. MIT, copia-se o código. |
+| [loading.dev](https://loading.dev/llms.txt) | Spinners de loading para React 19+, pacote `loading-dev`. |
+| [ascii.rest](https://ascii.rest/llms.txt) | Arte e banners em ASCII animados, pacote `ascii.rest`. |
+| [microinteractions.dev](https://microinteractions.dev/llms.txt) | Estudos de microinterações com demo e notas de timing (em construção): text swap button, hold to confirm, tab indicator, tooltip que respeita a borda. Citado em `skills/design/motion.md`. |
+| [Shoogle](https://shoogle.dev/mcp/shoogle-skills) | Busca de componentes em registries shadcn, por MCP (`https://mcp.shoogle.dev/mcp`, sem conta) ou pela CLI do shadcn (`search @shoogle -q`). É o plano B quando as bibliotecas preferidas não cobrem. Registrado em `mcp-servers.txt` e no `opencode.jsonc`. |
+
 ## Posts
 
 ### "O segredo está no prompt" (post, autor não registrado)
@@ -99,6 +126,6 @@ Pergunta: "o que levava 10 minutos para o Claude 5.5 agora leva 40; como evitar?
 | Repo | O que é | Status no setup |
 |---|---|---|
 | [cursor/plugins › pstack](https://github.com/cursor/plugins/tree/main/pstack) | Playbooks e skills do poteto. O guia (`docs/guide/`) põe verificação no centro: `create-verification-skill`, `correct` (erro repetido vira arquitetura, depois tipo, depois lint, depois teste, e só por último texto), `benchmark-checklist`, princípios nomeados para guiar o agente. | Em uso via fork `michael-denyer/pstack-claude`. A curar: manter o que é verificação, rever o que dispara muitos subagentes e o hook de sessão. |
-| [emilkowalski/skills](https://github.com/emilkowalski/skills) | Skills de design e animação (animate, review-animations, apple-design, break-ui…). Antes se chamava `emilkowalski/skill`; agora tem também `choreograph`, `gestures` e `remove-animations`. | Em uso. A curar. |
+| [emilkowalski/skills](https://github.com/emilkowalski/skills) | Skills de design e animação (animate, review-animations, apple-design, break-ui…). Antes se chamava `emilkowalski/skill`; agora tem também `choreograph`, `gestures` e `remove-animations`. | Copiado para dentro da skill `design` (`skills/design/emil/`, atualizado por `sync-emil.sh`). Não fica mais instalado à parte. |
 | [humanlayer/skills](https://github.com/humanlayer/skills) | `rpi` (pesquisa → plano → implementação em sessões novas), `design-control-loop` (loop agendado com sensor, controlador e atuador que abre PRs pequenos), `improve-claude-md`, `visual-pr`, `show-me`. | Não instalado. `design-control-loop` é candidato para melhoria contínua com sensor determinístico. |
 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "O dev sênior preguiçoso": escrever só o que a tarefa precisa, reusar o que o repo já tem, sem cortar validação, erro, segurança ou acessibilidade. Benchmark próprio: −53% de código, −45% de tokens, 98% da lógica de risco com teste (68% sem). Tem `/ponytail-review` e `/ponytail-audit`. | Instalado só no Pi. Candidato para Claude Code e OpenCode. |

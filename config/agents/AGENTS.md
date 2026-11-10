@@ -6,7 +6,7 @@ Reply in the language of the user's message. Lead with the conclusion, in plain 
 
 ## Autonomy
 
-Small, clear task: do it directly. Otherwise gather your questions at the start and ask them together, then work to the end without pausing to show partial results. Decide reversible things yourself. Confirm the direction first before anything irreversible, and before a long stretch of work that would be costly to redo.
+Small, clear task: do it directly. Otherwise ask your questions together at the start, then work to the end without pausing to show partial results. Decide reversible things yourself. Confirm the direction before anything irreversible, and before long work that would be costly to redo.
 
 ## Done
 
@@ -14,13 +14,14 @@ Done means verified: run or open the real result, show the evidence, and check t
 
 ## Delegation
 
-Work in the main loop by default; fan out to parallel subagents only for independent fronts. Send mechanical work (search, reading logs, running checks) to a cheaper model and keep decisions on the strongest one.
+Work in the main loop by default; fan out to subagents only for independent fronts. Send mechanical work (search, logs, running checks) to a cheaper model and keep decisions on the strongest one.
 
 ## Branches
 
-When the work matches a row, read that file first. Otherwise this page is all you need.
+When the work matches a row, read it first. Otherwise this page is enough.
 
 | Work | Read |
 |---|---|
 | Writing or changing code | `~/.agents/code.md` |
-| Changing skills, playbooks, or agent instructions; or the user corrects how you work | `~/.agents/setup.md` |
+| Building or changing a user interface | the `design` skill, then `~/.agents/code.md` |
+| Changing skills or agent instructions, or the user corrects how you work | `~/.agents/setup.md` |
