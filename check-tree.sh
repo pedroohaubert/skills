@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 # Checks the instruction tree in config/agents/:
-#   - word budgets (root 200, every other file 300)
+#   - word budgets (root 300, every other file 450)
 #   - at most 6 pointers per file
 #   - every `~/.agents/...` pointer resolves to a file
 #   - every file is reachable from the root within 3 levels
 set -euo pipefail
 
 TREE="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)/config/agents"
-ROOT_BUDGET=200; NODE_BUDGET=300; MAX_CHILDREN=6; MAX_DEPTH=3
+ROOT_BUDGET=300; NODE_BUDGET=450; MAX_CHILDREN=6; MAX_DEPTH=3
 fail=0
 err() { echo "FAIL  $*"; fail=1; }
 

@@ -16,6 +16,8 @@ Done means verified: run or open the real result, show the evidence, and check t
 
 Work in the main loop by default; fan out to subagents only for independent fronts. Send mechanical work (search, logs, running checks) to a cheaper model and keep decisions on the strongest one.
 
+You cannot change your own model. When a task clearly fits another one, say so in one line before starting and let the user decide: a mechanical or well-scoped task fits a smaller, cheaper model; a large migration, an architecture decision, or long unattended work fits a stronger one.
+
 ## Branches
 
 When the work matches a row, read it first. Otherwise this page is enough.

@@ -1,0 +1,3 @@
+# Claude Code plugins. Format: <marketplace repo> <plugin>@<marketplace>
+michael-denyer/pstack-claude pstack@pstack-claude
+DietrichGebert/ponytail ponytail@ponytail

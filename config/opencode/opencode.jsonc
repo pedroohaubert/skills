@@ -15,5 +15,8 @@
       "type": "remote",
       "url": "https://mcp.shoogle.dev/mcp"
     }
-  }
+  },
+  "plugins": [
+    "@dietrichgebert/ponytail"
+  ]
 }
