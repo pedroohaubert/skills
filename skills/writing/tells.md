@@ -1,56 +1,41 @@
 # AI tells
 
-Marks that make text read as generated. One alone proves little; a cluster is the signal. The voice profile outranks this list: a mark the user's own samples carry stays.
+Text that reads as generated loses the reader. Removing the tells is part of writing here, on every text.
 
-## Find and rewrite
+## How deep
 
-**Content**
+| Text | Do |
+|---|---|
+| A short message (a few lines of chat) | Check it against the quick list below. |
+| Public text, any text longer than three paragraphs, or a request to humanize | Read `humanizer/GUIDE.md` in full and run its process. |
 
-- Inflated significance: "pivotal", "a testament to", "um marco", "no cenário atual", "em um mundo onde…".
-- Promotional words: "innovative", "seamless", "robust", "inovador", "revolucionário", "apaixonado por", "jornada".
-- Vague authority: "experts say", "studies show", "especialistas apontam", with no source named.
-- The upbeat or moral ending: a closing line that sums up, promises, or teaches.
+## Using the guide
 
-**Structure**
+`humanizer/GUIDE.md` is the humanizer skill by blader (MIT), kept whole. Follow it with these changes:
 
-- Negative parallelism: "not just X, but Y", "não é só X, é Y".
-- The forced trio: three adjectives or three items where the content has one or two.
-- Announcing instead of saying: "it's worth noting", "let's dive in", "vale destacar", "é importante ressaltar".
-- A trailing participle phrase that adds analysis: "…, highlighting its importance", "…, garantindo mais eficiência".
-- Avoiding "is": "serves as", "stands as", "atua como", where "is" or "é" says it.
-- Synonym cycling: a new word for the same thing in each sentence. Keep one term.
-- Manufactured drama: a run of short fragments, or an aphorism closing each paragraph.
-- A generic question to the reader, asked for engagement.
+- **Voice.** The voice profile from step 3 of this skill is the writer's sample. It overrides the guide's patterns wherever the two disagree.
+- **Return.** Always use the guide's Embedded mode: run the mark, draft, check, and final steps silently, and hand back only the final text. The draft and the list of remaining patterns stay out of the reply.
+- **Language.** The guide's examples are in English. Every pattern applies to its equivalent construction in the text's language; the Portuguese forms below are the common ones.
 
-**Style**
+## Quick list
 
+Act on one sighting:
+
+- **Not X but Y:** "não é só X, é Y", "não se trata de X, mas de Y", "mais do que X, é Y".
+- **One-line closer** that restates or teaches: "E isso faz toda a diferença.", "No fim, é sobre pessoas.", "O futuro é agora."
+- **A saying that sounds deep:** "no fundo", "a verdadeira questão é", "X é a nova Y".
+- **A staged run-up:** "Vamos lá", "Vale destacar que", "É importante ressaltar", "Sem mais delongas", "A verdade é que".
+- **Arguing with no one:** "Não me entenda mal", "Alguns podem dizer que".
+
+Act when they pile up:
+
+- The forced trio of adjectives or items.
 - Em and en dashes: use a comma, a colon, or parentheses.
-- Bold in running text, decorative emoji, Title Case headings.
-- Bullets that each open with a bold label and a colon.
+- Inflated or sales words: "inovador", "revolucionário", "robusto", "jornada", "apaixonado por", "no cenário atual", "em um mundo onde".
+- A trailing phrase that adds analysis: "…, garantindo mais eficiência", "…, refletindo a importância de".
+- Bold in running text, decorative emoji, bullets that each open with a bold label.
+- Chat residue: "Claro!", "Ótima pergunta", "Espero que ajude", an offer to continue.
 
-**Chat residue**
+Keep what marks a person writing: a specific odd detail, an owned opinion, uneven sentence length, an aside in parentheses, mixed registers, slang, "kkkk", and anything inside a quotation, title, or proper name.
 
-- "Great question", "I hope this helps", "Claro!", "Espero que ajude", offers to continue.
-- Stacked hedges: "it could potentially be argued that".
-
-## Keep
-
-These are marks of a person writing. Editing them out makes the text worse.
-
-- Specific, odd, hard-to-invent detail.
-- Mixed feelings and an opinion the writer owns.
-- Uneven sentence length, asides in parentheses, self-correction.
-- Mixed registers, slang, laughter ("kkkk").
-- Words inside quotations, titles, and proper names.
-
-Polished grammar, one "however", one formal word, or one short emphatic sentence is ordinary writing; leave it.
-
-## Loop
-
-1. Rewrite the marked passages. Every claim of the original survives; the shape is free.
-2. Ask: what still makes this obviously generated? Does it state anything the source does not?
-3. Fix what the answers find.
-
-Done when a second read finds no cluster and no fact was added.
-
-Based on Wikipedia's "Signs of AI writing" and the humanizer skill by blader (MIT).
+Done when a second read finds no tell from the first group and no cluster from the second, and every fact of the original is still there.

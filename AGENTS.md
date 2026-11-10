@@ -11,6 +11,7 @@ Public repo with Pedro's skills and agent setup, installable with `npx skills ad
 - Claude Code reaches the root through `config/claude/CLAUDE.md` (an `@` import); OpenCode through the `config/opencode/AGENTS.md` symlink. Both load it alongside a project's own instructions.
 - `referencias.md` records what was studied and what we took from each source. Read it before proposing a setup change; add any article, post, or repo the user sends.
 - `skills/design/` is the design branch of the tree: a router (`SKILL.md`) over the user's own files and Emil Kowalski's skills vendored under `emil/` (MIT). Never edit `emil/` by hand; run `skills/design/sync-emil.sh` to update it. After changing the skill, reinstall it with `./install.sh skills`.
+- `skills/writing/humanizer/` is blader's humanizer skill vendored whole (MIT); update it with `skills/writing/sync-humanizer.sh` and keep our adaptations in `skills/writing/tells.md`.
 - Other third-party skills are not copied here; they are listed in `third-party-skills.txt`. MCP servers are listed in `mcp-servers.txt` (Claude Code) and `config/opencode/opencode.jsonc` (OpenCode).
 - Keep `install.sh` identical in both repos.
 - After touching `skills/`, check with `npx skills add . --list`.

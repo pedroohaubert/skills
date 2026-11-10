@@ -23,7 +23,7 @@ Torn between Correct and Improve: correct, and offer the improved version in one
 |---|---|
 | A message the user pastes to someone: chat, email, a note, questions | `message.md` |
 | Public text under the user's name: post, article, bio, title | `public.md` |
-| Existing text that sounds AI-written and should read naturally | `tells.md` |
+| Existing text that sounds AI-written and should read naturally | `tells.md`, plus the row above that matches the text |
 
 ## 3. Voice
 
