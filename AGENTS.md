@@ -1,12 +1,14 @@
 # AGENTS.md
 
-Repo público com as skills e a config de agentes do Pedro, instalável por `npx skills add pedroohaubert/skills`. Existe um gêmeo privado, `pedroohaubert/skills-private`, com a mesma estrutura e o mesmo `install.sh`.
+Public repo with Pedro's skills and agent setup, installable with `npx skills add pedroohaubert/skills`. A private twin, `pedroohaubert/skills-private`, has the same layout and the same `install.sh`.
 
-- Público é o que é genérico e serve para desenvolvimento de software. Skill de uso pessoal ou do trabalho, dotfiles e qualquer arquivo com caminho de projeto, nome de cliente, colega, URL interna, e-mail corporativo ou token vão para o privado.
-- Skill nova ou editada vai em `skills/<nome>/SKILL.md`, com `name` igual ao nome da pasta. Carregue a skill `writing-for-agents` antes de escrever ou editar uma.
-- Só `skills/` tem `SKILL.md`. O skills.sh varre o repo inteiro, e um `SKILL.md` em outra pasta vira skill instalável.
-- `config/<alvo>/` espelha um diretório da máquina: `agents` → `~/.agents`, `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. O que serve a qualquer agente vai em `agents`; config de um agente só vai na pasta dele. Alvo novo precisa de uma linha em `agent_dir` no `install.sh`.
-- Skill de terceiro não é copiada para cá: entra como linha em `third-party-skills.txt`.
-- `install.sh` deve continuar idêntico nos dois repos.
-- `referencias.md` guarda o que já foi estudado e o que tiramos de cada fonte. Leia antes de propor mudança no setup; artigo, post ou repo novo que o Pedro mandar entra lá.
-- Depois de mexer em `skills/`, confira com `npx skills add . --list`.
+- Public holds what is generic and serves software development. Personal or work skills, dotfiles, and anything naming a project path, client, colleague, internal URL, corporate email, or credential go to the private repo.
+- Every file an agent reads (skills, AGENTS.md, playbooks, config) is written in English. Human-facing docs (README, referencias.md) stay in Portuguese.
+- Load the `writing-for-agents` skill before writing or editing any of those files.
+- Skills live in `skills/<name>/SKILL.md`, with `name` matching the folder. `SKILL.md` exists only under `skills/`: skills.sh scans the whole repo and installs any it finds.
+- `config/<target>/` mirrors a machine directory: `agents` → `~/.agents`, `claude` → `~/.claude`, `opencode` → `~/.config/opencode`. Agent-neutral material goes in `agents`; config for one agent goes in its own folder. A new target needs a line in `agent_dir` in `install.sh`.
+- `config/agents/AGENTS.md` stays short: general rules plus a table of cases pointing at `config/agents/playbooks/`. Details for one case go in its playbook. Claude Code reaches it through `config/claude/CLAUDE.md` (an `@` import); OpenCode through the `config/opencode/AGENTS.md` symlink.
+- `referencias.md` records what was studied and what we took from each source. Read it before proposing a setup change; add any article, post, or repo the user sends.
+- Third-party skills are not copied here.
+- Keep `install.sh` identical in both repos.
+- After touching `skills/`, check with `npx skills add . --list`.
