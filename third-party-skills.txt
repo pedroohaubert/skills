@@ -2,5 +2,4 @@
 # Install with ./install.sh third-party
 # pstack is a Claude Code plugin (michael-denyer/pstack-claude), installed through the plugin marketplace, not listed here.
 mattpocock/skills writing-for-agents handoff
-blader/humanizer humanizer
 DannyMac180/skills be-ambitious

@@ -12,7 +12,7 @@ npx skills add pedroohaubert/skills -g --all # todas, globais, todos os agentes
 | Skill | Para quê |
 |---|---|
 | `design` | Roteador de design e interface: processo, bibliotecas preferidas, tipografia e as skills do Emil Kowalski como subarquivos |
-| `message` | Escreve a mensagem que você vai colar para alguém (Teams, Slack, e-mail): explicação, status do que subiu ou perguntas para o negócio. Sai curta, natural e já copiada para a área de transferência |
+| `writing` | Escreve, melhora ou corrige texto para pessoas, na sua voz e sem cara de IA: recado para Teams/Slack/e-mail, perguntas para o negócio, post, artigo, bio, título. Sai copiado para a área de transferência |
 
 ## Instalar o setup inteiro
 
