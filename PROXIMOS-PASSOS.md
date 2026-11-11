@@ -6,7 +6,7 @@ Done since: the `design` skill became opinionated (`composition.md`, `precedents
 
 ## To do
 
-1. **Grow the code part.** Today `code.md` and the playbooks are small files. The idea is to move part of it into our own, more opinionated skills, as was done with `design` and `writing`: how the code should be written, structured, and reviewed, with examples. The pstack principles and Ponytail are the base; my own layer on top is still missing.
+1. **Grow the code part (started 2026-11-10).** Decided with the user: no skill to invoke; the routing stays in the tree, which agents read on their own when coding. `code.md` now opens with "the repo's way wins" (opinions shape new code inside the repo's shape and never justify a refactor), the four-question bar (solves it, simplest, readable, no new trouble), "find the nearest example first", and a topic table pointing at `code/writing.md`, `tests.md`, `typescript.md`, `python.md`, `sql.md`, `shell.md`. Test defaults chosen by the user: pure rules with unit tests, red test first for bugs, browser tests only for critical flows; comments only for the why. Library defaults were left to the agent under the simplicity bar. Next: review the topic files with the user and add a review/PR file if the blind tests show a gap.
 2. **Blind-test the code playbooks** (feature, refactor, investigation, pull-request), as was done for `writing`. The PR one depends most on taste.
 3. **Advisor:** `advisorModel` points at Fable. When Fable leaves the plan, turn it off with `/advisor`.
 4. **Muse Ember:** add it to `modelos.md` and to OpenCode when it joins the Go plan (still absent from `opencode models` on 2026-11-10).
