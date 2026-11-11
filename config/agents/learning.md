@@ -33,7 +33,7 @@ When a lesson is already recorded, the existing line decides what to do:
 
 - **recorded and followed:** nothing to do;
 - **recorded but vague**, so it did not guide you: sharpen that line instead of adding another;
-- **recorded, clear, and skipped anyway:** a **repeat**. Prose did not hold, so propose structure (a check, a script, a type, a guard that fails on the old way) rather than restating it. pstack's `correct` skill builds those.
+- **recorded, clear, and skipped anyway:** a **repeat**. Prose did not hold, so propose structure (a check, a script, a type, a guard that fails on the old way) rather than restating it. pstack's `correct` skill builds those. The cause the bar asks for is the mistake's, which the recorded rule already names; why the rule was skipped needs no proof, because structure holds either way.
 
 ## Writing a lesson
 
@@ -64,6 +64,8 @@ Files in the user's skills repo are written in English, after loading the `writi
 | A fact about this project worth knowing next session: a decision, a state, an owner | Agent memory. |
 | How to work on any project: replies, autonomy, verification, delegation, code craft, writing | The deepest file in `~/.agents/` whose case it sharpens: a playbook step, a `code/` topic file, `setup.md` for how instructions evolve, and `AGENTS.md` only for what every task needs. |
 | Craft knowledge for a domain a skill covers (UI composition, writing voice) | That skill's reference file, such as the `design` skill's `composition.md` or `precedents.md`. |
+
+A repeat of a global lesson gets its structure in the global setup when it can: a script the matching skill ships and its steps tell the agent to run (a measurement helper in the design skill, a checker a playbook calls). It becomes a project check only when the guard needs that project's code.
 
 Project specifics stay in the project: paths, branch and release rules, names, and errors only one codebase produces. When a project lesson has a general core, the core goes global, anonymized, and the specifics stay local.
 

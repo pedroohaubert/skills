@@ -17,7 +17,7 @@ Work from primary sources, not from your memory of the session:
 - **The transcript.** Find it with pstack's `reflect` finder (`skills/reflect/scripts/find-transcript.mjs` under the installed plugin, with `claude-project-dir.mjs` beside it for this session's directory), then read every user message in order. Read only this project's transcripts.
 - **What changed and what was redone.** `git log` and `git diff` for each repo the session committed to, since the session began. A change that was made and then changed again marks a correction, even when the user's words were mild.
 - **What was remembered.** The memory files this session created or updated.
-- **The ledger.** In the user's skills repo (`readlink ~/.agents/AGENTS.md` shows where), `git log --format='%h %ad %s' --date=short --grep='^lesson'` lists the global lessons applied so far. This project's feedback memories list the local ones.
+- **The ledger.** In the user's skills repo (`readlink ~/.agents/AGENTS.md` shows where), `git log --format='%h %ad %s' --date=short --grep='^lesson'` lists the global lessons applied so far, and `git show --stat <hash>` shows which file each one landed in. This project's feedback memories list the local ones.
 
 Done when you hold the user's messages in order, the session's commits per repo, the memory changes, and the ledger.
 
@@ -33,7 +33,7 @@ For each correction and discovery, ask why until you reach a cause the next agen
 
 Then check whether earlier lessons held:
 
-- A signal that matches a lesson already in the ledger or in a feedback memory is a **repeat**: the earlier lesson did not hold. It goes to structure, not more prose.
+- A signal that matches a lesson already in the ledger or in a feedback memory is a **repeat**: the earlier lesson did not hold. It goes to structure, not more prose. A signal can be both an approval and a repeat (the user kept the fix for a lesson you had first skipped): sustain or improve describes the signal, and the repeat decides the kind.
 - A lesson that matches signals from earlier sessions (the ledger, this project's memories) is **frequent**: rank it higher.
 - A ledger lesson that this session contradicted, or that the user overruled, is **stale**: propose removing or rewriting it.
 
@@ -47,7 +47,7 @@ Done when each lesson has its four parts, a target file, and a kind: `check` (co
 
 ## 5. Show the plan and ask
 
-Present one table with no edits made yet:
+Present the plan in the user's language, with no edits made yet. Text that will land in the skills repo is shown in English, exactly as it will be written. One table, holding only the rows you propose; merged signals appear in their lesson's row:
 
 | # | Lesson (one line) | Sustain / improve | Signal (quote or evidence) | Target | Kind | Change |
 |---|---|---|---|---|---|---|
