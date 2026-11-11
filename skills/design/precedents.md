@@ -6,7 +6,7 @@ Before inventing a layout, find the app that already solved the same job and bor
 
 1. **Name the job, not the widget.** "See what needs my action across many items" is a job; "a list with tabs" is a widget. Look the job up below.
 2. **Look at the real screen.** Open the product, a screenshot search, or a pattern gallery (the Inspo MCP when it is connected). Memory of an app is vaguer than the app; borrow from what you actually see.
-3. **Take the structure, keep the house look.** Borrow arrangement, hierarchy, density, and interaction: what sits where, what is emphasized, what opens what. Colors, type, components, and icons stay the app's own (step 1 of `SKILL.md` outranks any precedent).
+3. **Take the structure, keep the house look.** Borrow arrangement, hierarchy, density, and interaction: what sits where, what is emphasized, what opens what. Colors, type, components, and icons stay the app's own (step 2 of `SKILL.md` outranks any precedent).
 4. **Say which precedent and what you took** in your plan and in the reply that shows the screen: "activity follows the GitHub pull request timeline: events as compact lines between comment bubbles". It makes the choice reviewable and gives the reviewer a shared reference to argue with.
 5. **When two precedents disagree,** pick the one closest to the users' density and domain: a back-office tool used all day leans toward Linear and Airtable, an occasional consumer flow toward Stripe Checkout and Apple.
 

@@ -11,18 +11,20 @@ A router. Read this page, then only the files your task matches. The guides unde
 
 ## Working on UI
 
-1. **Match the app first.** Read its tokens, components, and a screen near the one you are changing. The app's visual identity outranks any guide here and any component's stock look. For a screen people work in (a list, queue, or detail panel), write whose turn it is in each state before drawing anything.
-2. **Find the precedent.** Name the job the screen does and the established app that already does it well (`precedents.md`), look at that app's real screen, and borrow its structure. Invent only where no precedent fits, and say in your reply which precedent you followed.
-3. **Lay out the information.** Decide what the eye lands on first, second, third, and arrange for exactly that, following `composition.md`. When the design is not given, sketch two genuinely different directions (often two precedents), pulled far enough apart that the difference is obvious; write what each one loses, and pick. When neither wins, look for the third idea that keeps the strength of both.
-4. **Look at it.** Run the result and capture it at the sizes it ships in, measuring alignment instead of eyeballing it (`verify.md`). Iterate on what you see until it holds, then show the user with framing: the job the screen does, the precedent it follows, and what it improves for the people using it. Skip the tour of what is already visible on the screen.
-5. **Take feedback precisely.** Move only what was criticized and keep every approved decision. When a remark could be praise or complaint, or the element it names is unclear, ask which one in a single line first.
+1. **Reason before pixels.** For a new product, page, or flow, write who it is for, what it means to them, what came before, and what competitors do, before any layout. On every task, each decision carries a reason tied to the people or the job. Both follow `reasoning.md`.
+2. **Match the app first.** Read its tokens, components, and a screen near the one you are changing. The app's visual identity outranks any guide here and any component's stock look. For a screen people work in (a list, queue, or detail panel), write whose turn it is in each state before drawing anything.
+3. **Find the precedent.** Name the job the screen does and the established app that already does it well (`precedents.md`), look at that app's real screen, and borrow its structure. Invent only where no precedent fits, and say in your reply which precedent you followed.
+4. **Lay out the information.** Decide what the eye lands on first, second, third, and arrange for exactly that, following `composition.md`. When the design is not given, sketch two genuinely different directions (often two precedents), pulled far enough apart that the difference is obvious; write what each one loses, and pick. When neither wins, look for the third idea that keeps the strength of both.
+5. **Look at it.** Run the result and capture it at the sizes it ships in, measuring alignment instead of eyeballing it (`verify.md`). Iterate on what you see until it holds, then show the user with framing: the job the screen does, the precedent it follows, and what it improves for the people using it. Skip the tour of what is already visible on the screen.
+6. **Take feedback precisely.** Move only what was criticized and keep every approved decision. When a remark could be praise or complaint, or the element it names is unclear, ask which one in a single line first.
 
-Done when the screen is captured running, every alignment claim has a measurement behind it, the precedent is named, and it reads as part of the same app.
+Done when new work has its four answers written, every non-obvious choice has its reason, the screen is captured running, every alignment claim has a measurement behind it, the precedent is named, and it reads as part of the same app.
 
 ## Where to read
 
 | Task | Read |
 |---|---|
+| Starting a new product, page, or flow; choosing between versions; explaining or defending a design choice | `reasoning.md` |
 | Arranging a screen people work in: list, queue, detail panel, activity, sections, headers, cards; or reacting to "it looks ugly" | `composition.md` |
 | Choosing which established app to borrow from for a feature | `precedents.md` |
 | Capturing a change when the app needs a login you can't do, or checking alignment and scrolling | `verify.md` |
