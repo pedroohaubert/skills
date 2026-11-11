@@ -26,4 +26,4 @@ When the work matches a row, read it first. Otherwise this page is enough.
 |---|---|
 | Writing or changing code | `~/.agents/code.md` |
 | Building or changing a user interface | the `design` skill, then `~/.agents/code.md` |
-| Changing skills or agent instructions, or the user corrects how you work | `~/.agents/setup.md` |
+| Changing skills or agent instructions; the user corrects your work or approves a non-obvious choice | `~/.agents/setup.md` |
