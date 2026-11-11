@@ -10,6 +10,11 @@ Read it before composing such a screen, and again before you show it.
 - **Borrow a proven pattern before inventing one.** Every common job (a list of issues, a property panel, a comment thread, an inbox) has an app that solved it and that people already know how to read. Find it in `precedents.md`, take its structure, and spend invention only where the job is genuinely new.
 - **Quiet chrome, loud signals.** Chrome is everything that frames data: containers, borders, backgrounds, headers, icons that label. Signals are the data that demands a decision: state, priority, blocked, overdue, whose turn. Chrome stays neutral and minimal so signals can be strong without the screen turning into noise.
 - **Recompose, then calm it down.** A timid restyle of the old layout reads as "nothing changed"; a new layout full of tiles, tints, hovers, and icons reads as clutter. The target is a real change in structure delivered with very little decoration.
+- **Subtract before adding.** Hunt for redundancy: elements that do the same job. A state shown as a badge, again as a highlighted stepper step, and again as a sentence is one fact told three times; keep the strongest form and cut the rest, or give each a different job. Merge, group closer, or delete before adding anything new.
+- **Not everything is visible at once.** Digital screens can reveal over time: secondary forms, explanations, rarely used actions, and past history open on demand. Laying out every requirement on one page is the most common way a working screen turns into clutter.
+- **Words are layout.** The right heading or button label replaces whole elements. "Your turn: triage this ticket" with one line of guidance did the work of an instruction paragraph plus a legend. Headings and actions stay short and specific to the item ("Send to review", not "Submit").
+- **Leave room for the eye to pause.** Whitespace sets the reading rhythm: tight inside a group, generous between groups. Crowding every gap to fit more is how hierarchy disappears.
+- **Consistency compounds; break it on purpose.** Same sizes, spacing, components, and words everywhere, checked like proofreading. Break the system only at one deliberate point, with a reason you can state: the inverted "your turn" strip below breaks the card pattern because it is the single block that asks for action.
 
 ## Start from the flow
 
