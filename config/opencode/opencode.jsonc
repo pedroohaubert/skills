@@ -29,5 +29,13 @@
       }
     }
   },
-  "plugins": ["@dietrichgebert/ponytail", "github:michael-denyer/pstack-claude#main"]
+  "plugins": ["@dietrichgebert/ponytail", "github:michael-denyer/pstack-claude#main"],
+  // User-typed commands. retro is the end-of-session retrospective; the skill itself
+  // stays out of the model's reach, so only this command (typed by the user) runs it.
+  "commands": {
+    "retro": {
+      "description": "End-of-session retrospective: turn this session's corrections, approvals and discoveries into lessons, shown and approved first",
+      "template": "The user ran /retro. Read ~/.agents/skills/retro/SKILL.md in full and follow it for this session, using its OpenCode instructions where it gives them. $ARGUMENTS"
+    }
+  }
 }
