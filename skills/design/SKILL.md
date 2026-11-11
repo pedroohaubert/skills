@@ -9,16 +9,18 @@ A router. Read this page, then only the files your task matches. The guides unde
 
 ## Working on UI
 
-1. **Match the app first.** Read its tokens, components, and a screen near the one you are changing. The app's visual identity outranks any guide here and any component's stock look.
+1. **Match the app first.** Read its tokens, components, and a screen near the one you are changing. The app's visual identity outranks any guide here and any component's stock look. For a screen people work in (a list, queue, or detail panel), map whose turn it is in each state before drawing anything.
 2. **Open question, two directions.** When the design is not given, sketch two genuinely different directions, write what each one loses, and pick. A given design skips this step.
-3. **Look at it.** Run the result and capture it at the sizes it ships in. Iterate on what you see until it holds, then show the user.
+3. **Look at it.** Run the result and capture it at the sizes it ships in, measuring alignment instead of eyeballing it. Iterate on what you see until it holds, then show the user.
 
-Done when the screen is captured running, and it reads as part of the same app.
+Done when the screen is captured running, every alignment claim has a measurement behind it, and it reads as part of the same app.
 
 ## Where to read
 
 | Task | Read |
 |---|---|
+| Composing or reviewing a list, queue, side panel, or chat-like history; or reacting to visual feedback | `critique.md` |
+| Capturing a change when the app needs a login you can't do, or checking alignment and scrolling | `verify.md` |
 | Choosing a library, or installing a ready-made component | `libraries.md` |
 | Any motion: animation, transition, gesture, drag | `motion.md` |
 | Fonts, type sizes, line length, spacing of text | `typography.md` |
