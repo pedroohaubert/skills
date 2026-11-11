@@ -1,0 +1,15 @@
+#!/usr/bin/env bash
+# After each commit, apply it to this machine, so the agents never run an old copy:
+# relink the agent config or dotfiles, and reinstall the skills (copied, not linked)
+# when the commit touched them. Activated by `./install.sh hooks`.
+set -uo pipefail
+cd "$(git rev-parse --show-toplevel)" || exit 0
+changed="$(git diff-tree --no-commit-id --name-only -r --root HEAD)"
+apply() {
+  echo "post-commit: ./install.sh $1"
+  ./install.sh "$1" >/dev/null 2>&1 || echo "post-commit: ./install.sh $1 failed; run it by hand" >&2
+}
+grep -q '^config/' <<<"$changed" && apply config
+grep -q '^dotfiles/' <<<"$changed" && apply dotfiles
+grep -q '^skills/' <<<"$changed" && apply skills
+exit 0
