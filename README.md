@@ -13,7 +13,7 @@ This repo has two skills:
 
 | Skill | What it does |
 |---|---|
-| `design` | Router for design and UI: process, preferred libraries, typography, and Emil Kowalski's skills as subfiles |
+| `design` | Router for design and UI: process (flow, precedent, layout, verification), an opinionated composition guide, a catalog of proven app patterns to borrow, preferred libraries, typography, and Emil Kowalski's skills as subfiles |
 | `writing` | Writes, improves, or corrects text for people, in my voice and free of AI tells: messages for Teams, Slack, or email, questions for the business, posts, articles, bios, titles. The final text goes to the clipboard |
 
 ## Third-party skills and plugins
