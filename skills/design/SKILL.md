@@ -5,7 +5,9 @@ description: Design and build user interfaces. Use when creating, changing, poli
 
 # Design
 
-A router. Read this page, then only the files your task matches. The guides under `emil/` are Emil Kowalski's skills, vendored unmodified; when one names another skill, that skill is `emil/<name>/GUIDE.md`.
+A router. Read this page, then only the files your task matches. The guides under `emil/` are Emil Kowalski's skills, vendored unmodified; when one names another skill, that skill is `emil/<name>/GUIDE.md`. `tactile/` is kosta4a's tactile-design, vendored unmodified: a complete visual system for tactile, layered, quiet product UI (white controls raised by a ring and a crisp drop, fields as wells, one black primary, hierarchy from ink steps), written as roles and ratios so it remaps to any palette and typeface.
+
+**Tactile is the house style for new UI.** When the app has no visual identity yet, or the user asks for this look, adopt `tactile/GUIDE.md` whole and remap its tokens (`tactile/references/tokens.md`) to the brand. In an app that already has an identity, the app's tokens stay; tactile then lends only its process: the decision order, the per-area references, and the never-ship list, applied in the app's own values.
 
 ## Working on UI
 
@@ -27,7 +29,11 @@ Done when the screen is captured running, every alignment claim has a measuremen
 | Choosing a library, or installing a ready-made component | `libraries.md` |
 | Any motion: animation, transition, gesture, drag | `motion.md` |
 | Fonts, type sizes, line length, spacing of text | `typography.md` |
-| Polishing or reviewing a component: the craft bar and checklist | `emil/emil-design-eng/GUIDE.md` |
+| Starting product UI with no visual identity yet, or the user asks for a tactile, layered look | `tactile/GUIDE.md`, then its `references/tokens.md` to remap palette and typeface |
+| Deciding action weight (one primary, secondary, utility, destructive), how much data to show, or where controls go | `tactile/GUIDE.md` (the decision order), then `tactile/references/decisions.md` |
+| Buttons, fields, toggles, switches, badges, and their states | `tactile/references/buttons-and-controls.md` |
+| Elevation, shadows, light versus dark, modals, sheets, menus, toasts, cards, tables | `tactile/references/surfaces-and-layering.md` |
+| Polishing or reviewing a component: the craft bar and checklist | `emil/emil-design-eng/GUIDE.md`, then the "Never ship" list in `tactile/GUIDE.md` |
 | Trying several versions of one UI piece side by side | `emil/prototype/GUIDE.md` |
 | Stress-testing a UI with worst-case data | `emil/break-ui/GUIDE.md` |
 | A web app that must feel native on a phone | `emil/mobile-native/GUIDE.md` |

@@ -11,7 +11,7 @@ Public repo with Pedro's skills and agent setup, installable with `npx skills ad
 - Claude Code reaches the root through `config/claude/CLAUDE.md` (an `@` import); OpenCode through the `config/opencode/AGENTS.md` symlink. Both load it alongside a project's own instructions.
 - `PROXIMOS-PASSOS.md` lists what is pending; read it when resuming work here and update it when something closes or opens.
 - `referencias.md` records what was studied and what we took from each source. Read it before proposing a setup change; add any article, post, or repo the user sends.
-- `skills/design/` is the design branch of the tree: a router (`SKILL.md`) over the user's own files and Emil Kowalski's skills vendored under `emil/` (MIT). Never edit `emil/` by hand; run `skills/design/sync-emil.sh` to update it.
+- `skills/design/` is the design branch of the tree: a router (`SKILL.md`) over the user's own files, Emil Kowalski's skills vendored under `emil/`, and kosta4a's tactile-design vendored under `tactile/` (both MIT). Never edit `emil/` or `tactile/` by hand; update them with `skills/design/sync-emil.sh` and `skills/design/sync-tactile.sh`.
 - `skills/writing/humanizer/` is blader's humanizer skill vendored whole (MIT); update it with `skills/writing/sync-humanizer.sh` and keep our adaptations in `skills/writing/tells.md`.
 - Other third-party skills are not copied here; they are listed in `third-party-skills.txt`. MCP servers are listed in `mcp-servers.txt` (Claude Code) and `config/opencode/opencode.jsonc` (OpenCode).
 - Keep `install.sh` and `.githooks/` identical in both repos.
