@@ -4,6 +4,31 @@ How a session's corrections, approvals, and surprises become durable improvement
 
 Everything here follows one idea from the after-action review: compare what was meant to happen with what happened, find why they differ, and decide what to **sustain** and what to **improve**. Sustain matters as much as improve: an approach the user liked is lost as easily as a mistake is repeated.
 
+## The learning loop
+
+This loop is optional. Run it only when a signal in the current work clears the bar below; most tasks never get past the bar.
+
+1. When a lesson clears the bar, finish the task first.
+2. Open the target file the routing table names and search it for the lesson. What you find decides the proposal: nothing there means a new line; a vague line means sharpening it; a clear line you skipped means a repeat, so the proposal is structure. A lesson already there and followed means no proposal.
+3. After the main reply, propose it in a few lines: target, what the search found, the exact change, and the user's words or the evidence. Three proposals at most, the strongest first.
+4. Apply what the user approves, as **Asking and applying** says.
+
+A thorough pass over a whole session, with harvesting, ledger checks, routing across every target, and blind tests, is the `retro` skill. Only the user starts it.
+
+## The bar
+
+Most tasks end with nothing worth recording, and that is the normal outcome. A signal (defined in the next section) becomes a **lesson** only when all three hold; when none does, stop reading here: the loop ends with nothing to propose.
+
+1. **It will recur.** The next agent, on this project or another, would plausibly do the same thing again. A typo, a misunderstanding already cleared, or a permission given once for one action does not recur.
+2. **It is not already recorded and followed.** Search the likely homes first (the `~/.agents/` tree, the matching skill's reference files, the project's AGENTS.md and docs, agent memory).
+3. **Its cause is known.** For a correction or discovery, you can say why it happened, proven the way `~/.agents/playbooks/bug-fix.md` step 2 asks before a cause is named. A rule written on a guessed cause teaches the wrong lesson.
+
+When a lesson is already recorded, the existing line decides what to do:
+
+- **recorded and followed:** nothing to do;
+- **recorded but vague**, so it did not guide you: sharpen that line instead of adding another;
+- **recorded, clear, and skipped anyway:** a **repeat**. Prose did not hold, so propose structure (a check, a script, a type, a guard that fails on the old way) rather than restating it. pstack's `correct` skill builds those. The cause the bar asks for is the mistake's, which the recorded rule already names; why the rule was skipped needs no proof, because structure holds either way.
+
 ## Signals
 
 A **signal** is evidence that something about how you work should change or stay. Look for four kinds, and record each with the user's words or the evidence itself.
@@ -20,20 +45,6 @@ The loud signals are easy. The quiet ones are where most learning hides:
 - the user builds on your choice without remarking on it, which is an approval;
 - the user asks the same clarifying question twice, a sign your output was unclear;
 - frustration in the wording, even when the request itself is small.
-
-## The bar
-
-Most tasks end with nothing worth recording, and that is the normal outcome. A signal becomes a **lesson** only when all three hold:
-
-1. **It will recur.** The next agent, on this project or another, would plausibly do the same thing again. A typo, a misunderstanding already cleared, or a permission given once for one action does not recur.
-2. **It is not already recorded and followed.** Search the likely homes first (the `~/.agents/` tree, the matching skill's reference files, the project's AGENTS.md and docs, agent memory).
-3. **Its cause is known.** For a correction or discovery, you can say why it happened, proven the way `~/.agents/playbooks/bug-fix.md` step 2 asks before a cause is named. A rule written on a guessed cause teaches the wrong lesson.
-
-When a lesson is already recorded, the existing line decides what to do:
-
-- **recorded and followed:** nothing to do;
-- **recorded but vague**, so it did not guide you: sharpen that line instead of adding another;
-- **recorded, clear, and skipped anyway:** a **repeat**. Prose did not hold, so propose structure (a check, a script, a type, a guard that fails on the old way) rather than restating it. pstack's `correct` skill builds those. The cause the bar asks for is the mistake's, which the recorded rule already names; why the rule was skipped needs no proof, because structure holds either way.
 
 ## Writing a lesson
 
@@ -76,13 +87,3 @@ When a new lesson contradicts or makes an older line stale, propose removing or 
 - **Ask first** for every change outside agent memory, in the project repo and in the global setup alike: show the target, the exact text or the shape of the check, and the signal behind it, then apply only what the user approves. Use the question tool when the agent has one.
 - **Memory** you update directly, and say so in the reply.
 - **Commit** a global lesson in the skills repo with a subject that starts `lesson(<area>):`, one lesson per commit. That prefix is the ledger the `retro` skill reads to check whether earlier lessons held. The repo's post-commit hook applies the change to this machine; push only when the user approves.
-
-## The learning loop
-
-This loop is optional. Run it only when a signal in the current work clears the bar above; most tasks never get here.
-
-1. When a lesson clears the bar, finish the task first.
-2. After the main reply, propose it in a few lines: target, exact change, the user's words or the evidence. Three proposals at most, the strongest first.
-3. Apply what the user approves, as **Asking and applying** says.
-
-A thorough pass over a whole session, with harvesting, ledger checks, routing across every target, and blind tests, is the `retro` skill. Only the user starts it.

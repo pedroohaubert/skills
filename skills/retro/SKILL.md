@@ -31,7 +31,7 @@ Done when every user message that corrected, approved, or decided something maps
 
 For each correction and discovery, ask why until you reach a cause the next agent could act on. When the cause is a guess, either prove it the way `~/.agents/playbooks/bug-fix.md` step 2 asks, or mark the lesson unproven and drop it. For each approval, name what made it work.
 
-Then check whether earlier lessons held:
+Then check whether earlier lessons held. Search the ledger, this project's feedback memories, and the target files themselves (the routing table in `learning.md` lists them): lessons written before the `lesson(` prefix existed are visible only in the files.
 
 - A signal that matches a lesson already in the ledger or in a feedback memory is a **repeat**: the earlier lesson did not hold. It goes to structure, not more prose. A signal can be both an approval and a repeat (the user kept the fix for a lesson you had first skipped): sustain or improve describes the signal, and the repeat decides the kind.
 - A lesson that matches signals from earlier sessions (the ledger, this project's memories) is **frequent**: rank it higher.
