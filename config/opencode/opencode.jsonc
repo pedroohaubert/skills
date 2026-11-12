@@ -26,6 +26,10 @@
       "onepagelove": {
         "type": "remote",
         "url": "https://api.onepagelove.com/mcp"
+      },
+      "composio": {
+        "type": "remote",
+        "url": "https://connect.composio.dev/mcp"
       }
     }
   },

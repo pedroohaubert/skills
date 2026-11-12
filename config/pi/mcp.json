@@ -1,0 +1,25 @@
+{
+  "mcpServers": {
+    "shoogle": {
+      "url": "https://mcp.shoogle.dev/mcp"
+    },
+    "parallel": {
+      "url": "https://mcp.parallel.ai/mcp"
+    },
+    "exa-hosted": {
+      "url": "https://mcp.exa.ai/mcp"
+    },
+    "inspo": {
+      "url": "https://inspomcp.dev/api/mcp"
+    },
+    "kage": {
+      "url": "https://kage.design/mcp"
+    },
+    "onepagelove": {
+      "url": "https://api.onepagelove.com/mcp"
+    },
+    "composio": {
+      "url": "https://connect.composio.dev/mcp"
+    }
+  }
+}

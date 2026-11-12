@@ -1,0 +1,15 @@
+{
+  "searchRouting": {
+    "providers": [
+      "parallel-mcp",
+      "exa"
+    ],
+    "fallbackOn": [
+      "unsupported",
+      "transient",
+      "quota",
+      "network",
+      "invalid-response"
+    ]
+  }
+}

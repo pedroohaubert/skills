@@ -1,8 +1,10 @@
 # MCP servers (HTTP). Format: <name> <url>
-# Every server here works without an account or API key.
+# All work without an API key; composio signs in with OAuth on first use (/mcp in Claude Code and Pi).
+# Pi reads config/pi/mcp.json and OpenCode config/opencode/opencode.jsonc: keep both in step with this list.
 shoogle https://mcp.shoogle.dev/mcp
 parallel https://mcp.parallel.ai/mcp
 exa-hosted https://mcp.exa.ai/mcp
 inspo https://inspomcp.dev/api/mcp
 kage https://kage.design/mcp
 onepagelove https://api.onepagelove.com/mcp
+composio https://connect.composio.dev/mcp
