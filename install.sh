@@ -7,19 +7,18 @@
 #   ./install.sh third-party  installs the skills listed in third-party-skills.txt
 #   ./install.sh plugins      installs the Claude Code plugins in claude-plugins.txt and the Pi packages in pi-packages.txt
 #   ./install.sh mcp          registers the MCP servers in mcp-servers.txt with Claude Code
-#                             (OpenCode's live in config/opencode/opencode.jsonc)
+#                             (Pi's live in config/pi/mcp.json)
 #   ./install.sh hooks        turns on .githooks/: every commit re-applies what it changed
 # Anything already at the destination is moved to <file>.bak.<date> before linking.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENTS="claude-code opencode pi"
+AGENTS="claude-code pi"
 
 agent_dir() {
   case "$1" in
     agents) echo "$HOME/.agents" ;;
     claude) echo "$HOME/.claude" ;;
-    opencode) echo "$HOME/.config/opencode" ;;
     pi) echo "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}" ;;
     *) echo "install.sh: agente desconhecido em config/: $1" >&2; return 1 ;;
   esac

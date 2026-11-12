@@ -1,6 +1,6 @@
 # skills
 
-How I work with coding agents: the skills I wrote or adapted, and the config for Claude Code, OpenCode, and Pi, kept as neutral as possible.
+How I work with coding agents: the skills I wrote or adapted, and the config for Claude Code and Pi, kept as neutral as possible.
 
 ## Install only the skills
 
@@ -21,24 +21,23 @@ This repo has two skills:
 
 These are not copied here. `install.sh` installs them from `third-party-skills.txt` and `claude-plugins.txt`:
 
-- **pstack** (plugin, Claude Code, OpenCode, and Pi; on OpenCode and Pi its session hook is off, so it runs only when invoked): a working method with principles, playbooks, and verification. It ships `pstack-technical-writing`, which covers documentation, PRs, and commit messages. For text meant for a person, use `writing`.
-- **Ponytail** (plugin, Claude Code, OpenCode, and Pi): makes the agent write the smallest code that solves the task.
+- **pstack** (plugin, Claude Code and Pi; on Pi its session hook is off, so it runs only when invoked): a working method with principles, playbooks, and verification. It ships `pstack-technical-writing`, which covers documentation, PRs, and commit messages. For text meant for a person, use `writing`.
+- **Ponytail** (plugin, Claude Code and Pi): makes the agent write the smallest code that solves the task.
 - **Matt Pocock:** `writing-for-agents` (for writing skills and agent instructions) and `handoff`.
 - **Be Ambitious:** `be-ambitious`, to turn a request into a deeper version of itself.
 
 ## Install with an agent
 
-Copy the text below and paste it into a coding agent (Claude Code or OpenCode), in an empty folder:
+Copy the text below and paste it into a coding agent (Claude Code or Pi), in an empty folder:
 
 ```text
 I want to install the agent setup from the repository https://github.com/pedroohaubert/skills on my machine. Follow these steps and tell me about each one:
 
 1. Check that I have git, node, and npx. If any is missing, stop and tell me what to install.
 2. Clone the repository into ~/skills. If the folder already exists, don't delete anything: ask me first.
-3. Inside ~/skills, run ./install.sh. It creates links in ~/.agents, ~/.claude, ~/.config/opencode, and ~/.pi/agent, and keeps everything that already existed there with the suffix .bak.<date>. If the `claude` or `opencode` command doesn't exist, skip the plugin and MCP steps and tell me.
-4. Read config/opencode/opencode.jsonc. The default model is opencode-go/deepseek-v4.1-flash. If I don't have that plan, ask me which model to use and change it before going on.
-5. Verify the install: `ls -la ~/.agents ~/.claude/CLAUDE.md ~/.config/opencode/opencode.jsonc ~/.pi/agent/AGENTS.md` (the links must point into ~/skills), `./check-tree.sh` must pass, and `npx skills add ~/skills --list` must list the skills.
-6. Show me a summary: what got linked, what got saved in .bak, and any error. Don't delete or change files other than the ones install.sh creates.
+3. Inside ~/skills, run ./install.sh. It creates links in ~/.agents, ~/.claude, and ~/.pi/agent, and keeps everything that already existed there with the suffix .bak.<date>. If the `claude` or `pi` command doesn't exist, skip the plugin and MCP steps and tell me.
+4. Verify the install: `ls -la ~/.agents ~/.claude/CLAUDE.md ~/.pi/agent/AGENTS.md` (the links must point into ~/skills), `./check-tree.sh` must pass, and `npx skills add ~/skills --list` must list the skills.
+5. Show me a summary: what got linked, what got saved in .bak, and any error. Don't delete or change files other than the ones install.sh creates.
 ```
 
 The agent does the install and shows you what changed. If something goes wrong, the old files are still saved with the `.bak` suffix.
@@ -50,9 +49,9 @@ git clone https://github.com/pedroohaubert/skills ~/skills
 cd ~/skills && ./install.sh   # or: config | skills | third-party | plugins | mcp
 ```
 
-`config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`, `pi` → `~/.pi/agent`. Pi reads skills from `~/.agents/skills`, where skills.sh installs them; its packages are in `pi-packages.txt`, its MCP servers in `config/pi/mcp.json`, and `source ~/.pi/agent/autoupdate.sh` in `~/.zshrc` or `~/.bashrc` updates Pi and its packages before each start. Config that belongs to one agent stays in that agent's folder.
+`config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `pi` → `~/.pi/agent`. Pi reads skills from `~/.agents/skills`, where skills.sh installs them; its packages are in `pi-packages.txt`, its MCP servers in `config/pi/mcp.json`, and `source ~/.pi/agent/autoupdate.sh` in `~/.zshrc` or `~/.bashrc` updates Pi and its packages before each start. Config that belongs to one agent stays in that agent's folder.
 
-For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt` (and for Pi from `pi-packages.txt`), and `mcp` registers the servers listed in `mcp-servers.txt`.
+For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt` (and for Pi from `pi-packages.txt`), and `mcp` registers the servers listed in `mcp-servers.txt` (Pi reads them from `config/pi/mcp.json`).
 
 | MCP server | What it does |
 |---|---|

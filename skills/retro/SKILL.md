@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Retro
 
-Run this only when the user typed `/retro` (in OpenCode, the `/retro` command loads this file for them; in Pi, `/skill:retro`) or asked for a retro by name. If you reached this file any other way, stop and go back to the task.
+Run this only when the user typed `/retro` (in Pi, `/skill:retro`) or asked for a retro by name. If you reached this file any other way, stop and go back to the task.
 
 A retro is an after-action review of the whole session: what was meant to happen, what happened, why they differ, what to sustain and what to improve. The rules it applies live in `~/.agents/learning.md`: signals, the bar, the lesson format, routing, asking first. Read that file in full before step 1; this skill adds the depth a single task does not have time for.
 
@@ -16,7 +16,6 @@ Work from primary sources, not from your memory of the session:
 
 - **The transcript.** Read every user message of this session in order, from this project only:
   - *Claude Code:* find the file with pstack's `reflect` finder, `skills/reflect/scripts/find-transcript.mjs` under the installed plugin, with `claude-project-dir.mjs` beside it for this session's directory.
-  - *OpenCode:* from the project directory, `opencode session list` shows its sessions newest first; this session is normally the first. `opencode session export <id>` prints it as JSON, where each user message is an entry of `messages` with `"type": "user"` and its words in `text`.
   - *Pi:* sessions are JSONL files in `~/.pi/agent/sessions/--<cwd with / as ->--/`, one per session, named by start time, so the newest is this one. Each user message is a line with `"type": "message"` and `message.role` `"user"`; its words are the `text` parts of `message.content`.
 - **What changed and what was redone.** `git log` and `git diff` for each repo the session committed to, since the session began. A change that was made and then changed again marks a correction, even when the user's words were mild.
 - **What was remembered.** The memory files this session created or updated.
@@ -63,7 +62,7 @@ Done when the user has answered.
 
 ## 6. Apply and prove
 
-- **Project rows:** invoke pstack's `correct` skill (`pstack:correct` in Claude Code, `pstack-correct` in OpenCode) on the project repo with the approved lessons as input. It builds the check or structure and proves it fails on the real past mistake. The repo's own branch and PR flow applies.
+- **Project rows:** invoke pstack's `correct` skill (`pstack:correct` in Claude Code, `/skill:correct` in Pi) on the project repo with the approved lessons as input. It builds the check or structure and proves it fails on the real past mistake. The repo's own branch and PR flow applies.
 - **Global rows:** edit the target after loading `writing-for-agents`, one commit per lesson with a subject starting `lesson(<area>):`. Run `check-tree.sh` after editing the tree. The post-commit hook applies the change to this machine; push only when the user approves.
 - **Prove each global lesson with a blind run:** a fresh subagent gets a short scenario that should trigger it and reports which files it read and what it would do. For a lesson that changes when the agent acts, add a control scenario where it must not act. The lesson passes when the subagent reaches the file, applies the rule, and stays quiet in the control.
 

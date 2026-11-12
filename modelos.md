@@ -1,6 +1,6 @@
 # Models
 
-Which model for what. Sources: [Which Claude model should you build with](https://claude.dev/blog/which-claude-model-should-you-build-with/) and the OpenCode Go limits (see `referencias.md`).
+Which model for what. Sources: [Which Claude model should you build with](https://claude.dev/blog/which-claude-model-should-you-build-with/) and the OpenCode Go plan limits (see `referencias.md`).
 
 ## Claude Code
 
@@ -16,12 +16,14 @@ Before raising effort, give the agent a way to verify itself. Above `high`, the 
 
 The advisor (`advisorModel`) is set to Fable. When Fable leaves the plan, turn it off with `/advisor`.
 
-## OpenCode (smaller tasks, Go plan)
+## Pi
+
+Default: Opus 5.5 at medium, set in `~/.pi/agent/settings.json` (`defaultModel`, `defaultThinkingLevel`) and, while pi-optchat is installed, in the profile's `main` model (`/optchat settings`), which overrides it. The OpenCode Go plan models below are switched in with `/model`.
+
+### Smaller tasks, OpenCode Go plan
 
 | Use | Model | Why |
 |---|---|---|
 | Default: debugging, multi-file edits, search | `opencode-go/deepseek-v4.1-flash` | US$ 100 monthly cap on Go, the largest of the three, and fast |
 | UI, text, small edits that must come out ready | `opencode-go/claude-haiku-5-5` | Best score on merge-ready code and on UI; its cap is US$ 15 a month, so use it on purpose |
 | Many tool-call steps | Muse Ember, once it is on Go | Built for tool calls; today it exists only on Meta's API |
-
-The default model is set in `config/opencode/opencode.jsonc`. Open issue: in a test, `opencode run` ignored that key and opened a free model; with `-m opencode-go/deepseek-v4.1-flash` it works.
