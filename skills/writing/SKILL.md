@@ -39,7 +39,7 @@ In Improve and Write, reread the result against `tells.md` and fix what it finds
 
 ## 6. Deliver
 
-Write the final text to a temporary file and run `scripts/copy.sh <file>`, so the clipboard holds it exactly as written. The reply has, in this order:
+Write the final text to a temporary file and run `scripts/copy.sh <file>`, so the clipboard holds it exactly as written. Text for Teams, Slack or email goes in an `.html` file: one `<p>` per paragraph, real `<ul>`/`<ol>` lists and `<b>` for headings, so the paste keeps its formatting and spacing; plain text pastes as one cramped block. The reply has, in this order:
 
 1. the same text, as plain paragraphs;
 2. in Correct mode, a short, dry list of what changed;
