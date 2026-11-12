@@ -6,7 +6,7 @@ disable-model-invocation: true
 
 # Retro
 
-Run this only when the user typed `/retro` (in OpenCode, the `/retro` command loads this file for them) or asked for a retro by name. If you reached this file any other way, stop and go back to the task.
+Run this only when the user typed `/retro` (in OpenCode, the `/retro` command loads this file for them; in Pi, `/skill:retro`) or asked for a retro by name. If you reached this file any other way, stop and go back to the task.
 
 A retro is an after-action review of the whole session: what was meant to happen, what happened, why they differ, what to sustain and what to improve. The rules it applies live in `~/.agents/learning.md`: signals, the bar, the lesson format, routing, asking first. Read that file in full before step 1; this skill adds the depth a single task does not have time for.
 
@@ -17,6 +17,7 @@ Work from primary sources, not from your memory of the session:
 - **The transcript.** Read every user message of this session in order, from this project only:
   - *Claude Code:* find the file with pstack's `reflect` finder, `skills/reflect/scripts/find-transcript.mjs` under the installed plugin, with `claude-project-dir.mjs` beside it for this session's directory.
   - *OpenCode:* from the project directory, `opencode session list` shows its sessions newest first; this session is normally the first. `opencode session export <id>` prints it as JSON, where each user message is an entry of `messages` with `"type": "user"` and its words in `text`.
+  - *Pi:* sessions are JSONL files in `~/.pi/agent/sessions/--<cwd with / as ->--/`, one per session, named by start time, so the newest is this one. Each user message is a line with `"type": "message"` and `message.role` `"user"`; its words are the `text` parts of `message.content`.
 - **What changed and what was redone.** `git log` and `git diff` for each repo the session committed to, since the session began. A change that was made and then changed again marks a correction, even when the user's words were mild.
 - **What was remembered.** The memory files this session created or updated.
 - **The ledger.** In the user's skills repo (`readlink ~/.agents/AGENTS.md` shows where), `git log --format='%h %ad %s' --date=short --grep='^lesson'` lists the global lessons applied so far, and `git show --stat <hash>` shows which file each one landed in. This project's feedback memories list the local ones.

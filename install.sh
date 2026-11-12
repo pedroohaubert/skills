@@ -8,17 +8,19 @@
 #   ./install.sh plugins      installs the Claude Code plugins listed in claude-plugins.txt
 #   ./install.sh mcp          registers the MCP servers in mcp-servers.txt with Claude Code
 #                             (OpenCode's live in config/opencode/opencode.jsonc)
+#   ./install.sh hooks        turns on .githooks/: every commit re-applies what it changed
 # Anything already at the destination is moved to <file>.bak.<date> before linking.
 set -euo pipefail
 
 REPO="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-AGENTS="claude-code opencode"
+AGENTS="claude-code opencode pi"
 
 agent_dir() {
   case "$1" in
     agents) echo "$HOME/.agents" ;;
     claude) echo "$HOME/.claude" ;;
     opencode) echo "$HOME/.config/opencode" ;;
+    pi) echo "${PI_CODING_AGENT_DIR:-$HOME/.pi/agent}" ;;
     *) echo "install.sh: agente desconhecido em config/: $1" >&2; return 1 ;;
   esac
 }
@@ -53,6 +55,12 @@ install_config() {
     dir="${dir%/}"
     link_tree "$dir" "$(agent_dir "$(basename "$dir")")"
   done
+}
+
+install_hooks() {
+  [ -d "$REPO/.githooks" ] || return 0
+  git -C "$REPO" config core.hooksPath .githooks
+  echo "ok      git hooks from .githooks/"
 }
 
 install_dotfiles() {
@@ -102,6 +110,7 @@ case "${1:-all}" in
   third-party) install_third_party ;;
   mcp) install_mcp ;;
   plugins) install_plugins ;;
-  all) install_config; install_dotfiles; install_skills; install_third_party; install_mcp; install_plugins ;;
-  *) echo "uso: $0 [all|config|dotfiles|skills|third-party|mcp|plugins]" >&2; exit 1 ;;
+  hooks) install_hooks ;;
+  all) install_hooks; install_config; install_dotfiles; install_skills; install_third_party; install_mcp; install_plugins ;;
+  *) echo "uso: $0 [all|config|dotfiles|skills|third-party|mcp|plugins|hooks]" >&2; exit 1 ;;
 esac
