@@ -1,0 +1,4 @@
+# Pi packages (extensions and their skills). Format: <source> as `pi install` takes it.
+# Installed by ./install.sh plugins. pstack's session hook is off in config/pi/pstack-models.md.
+npm:@dietrichgebert/ponytail
+git:github.com/michael-denyer/pstack-claude

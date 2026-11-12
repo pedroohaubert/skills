@@ -21,8 +21,8 @@ This repo has two skills:
 
 These are not copied here. `install.sh` installs them from `third-party-skills.txt` and `claude-plugins.txt`:
 
-- **pstack** (plugin, Claude Code and OpenCode): a working method with principles, playbooks, and verification. It ships `pstack-technical-writing`, which covers documentation, PRs, and commit messages. For text meant for a person, use `writing`.
-- **Ponytail** (plugin, Claude Code and OpenCode): makes the agent write the smallest code that solves the task.
+- **pstack** (plugin, Claude Code, OpenCode, and Pi; on OpenCode and Pi its session hook is off, so it runs only when invoked): a working method with principles, playbooks, and verification. It ships `pstack-technical-writing`, which covers documentation, PRs, and commit messages. For text meant for a person, use `writing`.
+- **Ponytail** (plugin, Claude Code, OpenCode, and Pi): makes the agent write the smallest code that solves the task.
 - **Matt Pocock:** `writing-for-agents` (for writing skills and agent instructions) and `handoff`.
 - **Be Ambitious:** `be-ambitious`, to turn a request into a deeper version of itself.
 
@@ -52,7 +52,7 @@ cd ~/skills && ./install.sh   # or: config | skills | third-party | plugins | mc
 
 `config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`, `pi` → `~/.pi/agent`. Pi reads skills from `~/.agents/skills`, where skills.sh installs them. Config that belongs to one agent stays in that agent's folder.
 
-For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt`, and `mcp` registers the servers listed in `mcp-servers.txt`.
+For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt` (and for Pi from `pi-packages.txt`), and `mcp` registers the servers listed in `mcp-servers.txt`.
 
 | MCP server | What it does |
 |---|---|

@@ -5,7 +5,7 @@
 #   ./install.sh dotfiles     links dotfiles/home/* into ~ and dotfiles/config/* into ~/.config
 #   ./install.sh skills       installs skills/ globally via skills.sh
 #   ./install.sh third-party  installs the skills listed in third-party-skills.txt
-#   ./install.sh plugins      installs the Claude Code plugins listed in claude-plugins.txt
+#   ./install.sh plugins      installs the Claude Code plugins in claude-plugins.txt and the Pi packages in pi-packages.txt
 #   ./install.sh mcp          registers the MCP servers in mcp-servers.txt with Claude Code
 #                             (OpenCode's live in config/opencode/opencode.jsonc)
 #   ./install.sh hooks        turns on .githooks/: every commit re-applies what it changed
@@ -103,14 +103,22 @@ install_plugins() {
   done
 }
 
+install_pi_packages() {
+  [ -f "$REPO/pi-packages.txt" ] || return 0
+  command -v pi >/dev/null || { echo "pi CLI not found; skipped Pi packages"; return 0; }
+  grep -vE '^\s*(#|$)' "$REPO/pi-packages.txt" | while read -r source; do
+    pi install "$source" </dev/null || true
+  done
+}
+
 case "${1:-all}" in
   config) install_config ;;
   dotfiles) install_dotfiles ;;
   skills) install_skills ;;
   third-party) install_third_party ;;
   mcp) install_mcp ;;
-  plugins) install_plugins ;;
+  plugins) install_plugins; install_pi_packages ;;
   hooks) install_hooks ;;
-  all) install_hooks; install_config; install_dotfiles; install_skills; install_third_party; install_mcp; install_plugins ;;
+  all) install_hooks; install_config; install_dotfiles; install_skills; install_third_party; install_mcp; install_plugins; install_pi_packages ;;
   *) echo "uso: $0 [all|config|dotfiles|skills|third-party|mcp|plugins|hooks]" >&2; exit 1 ;;
 esac

@@ -13,7 +13,7 @@ Public repo with Pedro's skills and agent setup, installable with `npx skills ad
 - `referencias.md` records what was studied and what we took from each source. Read it before proposing a setup change; add any article, post, or repo the user sends.
 - `skills/design/` is the design branch of the tree: a router (`SKILL.md`) over the user's own files, Emil Kowalski's skills vendored under `emil/`, and kosta4a's tactile-design vendored under `tactile/` (both MIT). Never edit `emil/` or `tactile/` by hand; update them with `skills/design/sync-emil.sh` and `skills/design/sync-tactile.sh`.
 - `skills/writing/humanizer/` is blader's humanizer skill vendored whole (MIT); update it with `skills/writing/sync-humanizer.sh` and keep our adaptations in `skills/writing/tells.md`.
-- Other third-party skills are not copied here; they are listed in `third-party-skills.txt`. MCP servers are listed in `mcp-servers.txt` (Claude Code) and `config/opencode/opencode.jsonc` (OpenCode).
+- Other third-party skills are not copied here; they are listed in `third-party-skills.txt`. Plugins are listed in `claude-plugins.txt` (Claude Code), `pi-packages.txt` (Pi), and `config/opencode/opencode.jsonc` (OpenCode). MCP servers are listed in `mcp-servers.txt` (Claude Code) and `config/opencode/opencode.jsonc` (OpenCode).
 - Keep `install.sh` and `.githooks/` identical in both repos.
 - Commits apply themselves: the `post-commit` hook in `.githooks/` (turned on by `./install.sh hooks`) relinks `config/` or `dotfiles/` and reinstalls `skills/` when a commit touches them. If it prints a failure, run that `./install.sh` mode by hand.
 - After touching `skills/`, check with `npx skills add . --list`.
