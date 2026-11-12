@@ -13,3 +13,4 @@ npm:pi-web-access
 npm:@narumitw/pi-goal
 npm:@cad0p/pi-usage
 npm:pi-compact-tools
+npm:pi-antigravity
