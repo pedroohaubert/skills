@@ -60,7 +60,12 @@ When the task matches a row, read that playbook and follow its steps. A small, c
 
 Reading these is part of the task, every time you write or change code beyond a one-line edit. They are what makes the result read like a careful engineer wrote it.
 
-1. **Ponytail.** When the Ponytail plugin is installed, follow its ruleset: look at what the repo and the platform already give you, write only what the task needs, and keep validation, error handling, security, and accessibility intact. Use its `ponytail-review` skill to review a change and `ponytail-audit` to rank what to fix in a whole repo.
+1. **Ponytail.** When the Ponytail plugin is installed, it is the default for any code change, yours or a subagent's:
+   - Before the first edit, read its `ponytail` skill in full and list every place the change must reach (callers, tests, fixtures, config).
+   - Before you call the change done, commit it or open a PR, run the `ponytail-review` skill on the diff and fix what it finds. The PR or report says the review ran and what changed because of it.
+   - Mark each known shortcut in the code with `shortcut: <the limit>, <when to upgrade>`.
+   - End the report with one or two lines: what you skipped or did not check, and the risk the user must know.
+   - Use `ponytail-audit` to rank what to fix in a whole repo.
 2. **pstack principles.** When pstack is installed, read the `principle-*` skills that match the work before the first edit, in full:
 
    | Writing | Read |

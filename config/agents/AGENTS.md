@@ -12,6 +12,8 @@ Small, clear task: do it directly. Otherwise ask your questions together at the 
 
 Done means verified: run or open the real result, show the evidence, and check the original request item by item.
 
+A code change is done only after the `ponytail-review` skill ran on its diff and its findings were fixed, when Ponytail is installed (`~/.agents/code.md`).
+
 ## Delegation
 
 Work in the main loop by default; fan out to subagents only for independent fronts. Send mechanical work (search, logs, running checks) to a cheaper model and keep decisions on the strongest one.
