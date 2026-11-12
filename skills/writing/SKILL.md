@@ -39,7 +39,7 @@ In Improve and Write, reread the result against `tells.md` and fix what it finds
 
 ## 6. Deliver
 
-Write the final text to a temporary file and run `scripts/copy.sh <file>`, so the clipboard holds it exactly as written. Text for Teams, Slack or email goes in an `.html` file: one `<p>` per paragraph, real `<ul>`/`<ol>` lists and `<b>` for headings, so the paste keeps its formatting; plain text pastes as one cramped block. Teams drops the space between `<p>`s, so put a blank line (`<p><br></p>`) between every two blocks: paragraphs, a heading and its text, a paragraph and a list. In any text, two paragraphs in a row always have a blank line between them. The reply has, in this order:
+Write the final text to a temporary file and run `scripts/copy.sh <file>`, so the clipboard holds it exactly as written. Text for Teams, Slack or email goes in an `.html` file: one `<p>` per paragraph, and real `<ul>`/`<ol>` lists where items line up, so the paste keeps its formatting. Keep styling minimal: no bold for headings or emphasis, a numbered line ("1. …") is enough; plain text pastes as one cramped block. Teams drops the space between `<p>`s, so put a blank line (`<p><br></p>`) between every two blocks: paragraphs, a heading and its text, a paragraph and a list. In any text, two paragraphs in a row always have a blank line between them. The reply has, in this order:
 
 1. the same text, as plain paragraphs;
 2. in Correct mode, a short, dry list of what changed;
