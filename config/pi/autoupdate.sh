@@ -1,5 +1,5 @@
-# Updates Pi and its packages before each interactive start. Source it from ~/.zshrc:
-#   source ~/.pi/agent/autoupdate.zsh
+# Updates Pi and its packages before each interactive start. Source it from ~/.zshrc or ~/.bashrc:
+#   source ~/.pi/agent/autoupdate.sh
 # Subcommands (install, update, mcp, ...) and offline runs start without updating;
 # a failed update (no network) never blocks the start.
 pi() {
