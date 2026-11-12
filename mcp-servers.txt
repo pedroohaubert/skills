@@ -1,6 +1,6 @@
 # MCP servers (HTTP). Format: <name> <url>
 # All work without an API key; composio signs in with OAuth on first use (/mcp in Claude Code and Pi).
-# Pi reads config/pi/mcp.json: keep it in step with this list.
+# Pi reads config/pi/mcp.json: the same list minus exa-hosted, since pi-web-access already searches through Parallel and Exa.
 shoogle https://mcp.shoogle.dev/mcp
 parallel https://mcp.parallel.ai/mcp
 exa-hosted https://mcp.exa.ai/mcp

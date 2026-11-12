@@ -72,7 +72,7 @@ Files in the user's skills repo are written in English, after loading the `writi
 | The lesson is about | Goes to |
 |---|---|
 | This project: its code, workflow, tooling, data, conventions, recurring breakage | The project repo. Prefer a check, script, test, or structure over prose; pstack's `correct` builds them and proves each check on a real past mistake. The repo's own branch and PR flow applies. |
-| A fact about this project worth knowing next session: a decision, a state, an owner | Agent memory. An agent without persistent memory (Pi) proposes it for the project's AGENTS.md instead, asking first like any other repo change. |
+| A fact about this project worth knowing next session: a decision, a state, an owner | Agent memory. An agent without per-project memory (Pi, whose pi-optchat memory follows a profile across every project) proposes it for the project's AGENTS.md instead, asking first like any other repo change. |
 | How to work on any project: replies, autonomy, verification, delegation, code craft, writing | The deepest file in `~/.agents/` whose case it sharpens: a playbook step, a `code/` topic file, `setup.md` for how instructions evolve, and `AGENTS.md` only for what every task needs. |
 | Craft knowledge for a domain a skill covers (UI composition, writing voice) | That skill's reference file, such as the `design` skill's `composition.md` or `precedents.md`. |
 

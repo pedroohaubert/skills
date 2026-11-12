@@ -6,9 +6,6 @@
     "parallel": {
       "url": "https://mcp.parallel.ai/mcp"
     },
-    "exa-hosted": {
-      "url": "https://mcp.exa.ai/mcp"
-    },
     "inspo": {
       "url": "https://inspomcp.dev/api/mcp"
     },

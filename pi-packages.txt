@@ -1,12 +1,12 @@
 # Pi packages (extensions and their skills). Format: <source> as `pi install` takes it.
 # Installed by ./install.sh plugins. pstack's session hook is off in config/pi/pstack-models.md.
 # Left out on purpose: pi-subagents (pstack's `agent` tool already delegates) and @onkernel/browser-loop
-# (needs a paid KERNEL_API_KEY, and alongside these packages it left the model with no tools at all).
+# (needs a paid KERNEL_API_KEY, and alongside these packages it left the model with no tools at all), and billion-context
+# (a request-rewriting compression proxy that overlapped pi-optchat's memory, added a third subagent tool, and self-updated).
 npm:@dietrichgebert/ponytail
 git:github.com/michael-denyer/pstack-claude
 npm:@ff-labs/pi-fff
 npm:pi-context-view
-npm:billion-context
 npm:pi-optchat
 npm:@juicesharp/rpiv-ask-user-question
 npm:pi-web-access
