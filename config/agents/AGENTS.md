@@ -16,6 +16,8 @@ Done means verified: run or open the real result, show the evidence, and check t
 
 Work in the main loop by default; fan out to subagents only for independent fronts. Send mechanical work (search, logs, running checks) to a cheaper model and keep decisions on the strongest one.
 
+A subagent reads only its brief and the project's instructions, so every brief for work that changes something must say: read `~/.agents/code.md` (and the `design` skill for UI) before the first edit, prove the result with `~/.agents/playbooks/verification.md` (tests for logic, the real command or request, and for UI the running app with screenshots), and return the evidence. A report without evidence is not done: send the agent back, or verify it yourself before telling the user. Example: two agents shipped UI changes with only unit tests and type checks, because the brief never asked them to open the screen.
+
 You cannot change your own model. When a task clearly fits another one, say so in one line before starting and let the user decide: a mechanical or well-scoped task fits a smaller, cheaper model; a large migration, an architecture decision, or long unattended work fits a stronger one.
 
 ## Branches
