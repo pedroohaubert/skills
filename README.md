@@ -50,7 +50,7 @@ git clone https://github.com/pedroohaubert/skills ~/skills
 cd ~/skills && ./install.sh   # or: config | skills | third-party | plugins | mcp
 ```
 
-`config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`, `pi` → `~/.pi/agent`. Pi reads skills from `~/.agents/skills`, where skills.sh installs them; its packages are in `pi-packages.txt`, its MCP servers in `config/pi/mcp.json`, and `source ~/.pi/agent/autoupdate.sh` in `~/.zshrc` updates Pi and its packages before each start. Config that belongs to one agent stays in that agent's folder.
+`config/<target>/` mirrors a machine directory and becomes symlinks there: `agents` → `~/.agents` (instructions any agent reads), `claude` → `~/.claude`, `opencode` → `~/.config/opencode`, `pi` → `~/.pi/agent`. Pi reads skills from `~/.agents/skills`, where skills.sh installs them; its packages are in `pi-packages.txt`, its MCP servers in `config/pi/mcp.json`, and `source ~/.pi/agent/autoupdate.sh` in `~/.zshrc` or `~/.bashrc` updates Pi and its packages before each start. Config that belongs to one agent stays in that agent's folder.
 
 For OpenCode, this repo's `opencode.jsonc` loads the plugins (Ponytail and pstack) and the MCP servers. For Claude Code, `plugins` installs pstack and Ponytail from `claude-plugins.txt` (and for Pi from `pi-packages.txt`), and `mcp` registers the servers listed in `mcp-servers.txt`.
 
