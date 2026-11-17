@@ -9,7 +9,7 @@ apply() {
   echo "post-commit: ./install.sh $1"
   ./install.sh "$1" >/dev/null 2>&1 || echo "post-commit: ./install.sh $1 failed; run it by hand" >&2
 }
-grep -q '^config/' <<<"$changed" && apply config
+grep -qE '^(config/|claude-settings\.json)' <<<"$changed" && apply config
 grep -q '^dotfiles/' <<<"$changed" && apply dotfiles
 grep -q '^skills/' <<<"$changed" && apply skills
 exit 0

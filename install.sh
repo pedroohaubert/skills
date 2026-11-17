@@ -54,6 +54,19 @@ install_config() {
     dir="${dir%/}"
     link_tree "$dir" "$(agent_dir "$(basename "$dir")")"
   done
+  merge_claude_settings
+}
+
+# Claude Code rewrites settings.json itself, so it cannot be a symlink: merge the repo's keys into it.
+# shortcut: arrays are replaced, not appended (a PreToolUse hook added by hand is lost); merge per hook if that happens.
+merge_claude_settings() {
+  local src="$REPO/claude-settings.json" dest="$HOME/.claude/settings.json" merged
+  [ -f "$src" ] || return 0
+  [ -f "$dest" ] || echo '{}' > "$dest"
+  merged="$(jq -s '.[0] * .[1]' "$dest" "$src")" || { echo "fail    $dest: jq merge" >&2; return 1; }
+  if [ "$merged" = "$(jq . "$dest")" ]; then echo "ok      $dest"; return; fi
+  printf '%s\n' "$merged" > "$dest"
+  echo "merge   $dest <- $src"
 }
 
 install_hooks() {
