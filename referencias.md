@@ -132,3 +132,20 @@ Question: "what took 10 minutes with Claude 5.5 now takes 40; how do I prevent i
 | [DietrichGebert/ponytail](https://github.com/DietrichGebert/ponytail) | "The lazy senior dev": write only what the task needs, reuse what the repo already has, never cut validation, error handling, security, or accessibility. Its own benchmark: −53% code, −45% tokens, 98% of risky logic with a test (68% without). Has `/ponytail-review` and `/ponytail-audit`. | Installed as a Claude Code plugin (`claude-plugins.txt`) and listed in `opencode.jsonc`. `code.md` tells the agent to follow it. |
 | [kosta4a/tactile-design](https://github.com/kosta4a/tactile-design) | A visual system for tactile, layered, quiet product UI: white controls raised by a ring and a crisp drop, fields as wells, one black primary, hierarchy from ink steps instead of bold or colour; elevation taken from the surface beneath, designed per theme. Written as roles and ratios (Radix-style 12-step scales) with a decision order, per-area references, and a never-ship list. MIT. Read 2026-11-11. | Copied into the `design` skill (`skills/design/tactile/`, updated by `sync-tactile.sh`): the house style for new UI, and its process (decision order, never-ship list) for apps with their own identity. |
 | 4hands, "Taste, a decision made with reason" and "Start with meaning, not pixels" (pasted by the user, read 2026-11-11) | Taste is a feeling turned into a reason you can say, share, and repeat; mostly subtraction (less, but better). Before any pixel, know who it is for, what it means, what came before, and what competitors do; research first, moodboards after, and take references apart. AI makes polished guesses cheap, so the reasoning is what selects. | One block in the `design` skill: `skills/design/reasoning.md`, reached from step 1 of its `SKILL.md`. |
+
+### How the Claude Code team thinks about verification (Addy Osmani, 2026-11-16)
+https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/ · read 2026-11-16
+
+- Verification loops are what let you delegate: without them you can run one or two agents, with them dozens. A separate grader against a rubric gave up to +10 points.
+- Three test types worth the investment: end-to-end (hard to fool, and its failure says which step broke), property tests (fast-check, Hypothesis, proptest: round-trip, invariants, idempotency, equivalence with a naive version), and differential tests (old system as the oracle on random or production inputs, with normalization and a list of approved differences).
+- Flaky tests teach the agent to rerun instead of fix; slow tests get run less. Heavy tests go before the commit.
+- Verification means running the change: a `verify` skill per app, kept fast and reliable as the smoke harness.
+- A check still failing after three rounds of fixes stops the agent and calls a human.
+- A reliability checklist (39 items), each with a trigger readable from a diff, a check, and the incident behind it; the agent checks only the items whose trigger matches.
+- One reviewer tuned with a `REVIEW.md`, in rounds that build on earlier findings, beats stacking reviewers. Findings tagged Important, Nit, or Pre-existing.
+- A change can never edit the check that judges it: rules are read from the base branch. A review of a commit that changed afterwards means nothing. Cheap checks (tests, build, lint) run before a PR, enforced by a hook or a `/goal`.
+- Each commit is stamped with how it was verified, "none" included. A commit gate with off, observe, and enforce modes; a commit may explain why it skipped; after two blocks in a session the next passes, so the agent never gets stuck.
+- Review the reviewers: reverts, rejections, and a recall eval built from past incidents.
+- Misses become rules only when seen in two or more PRs and visible from a diff; three agents try to disprove each. Flaky tests are fixed at the root or deleted with a written reason, never retried or slept. Rules and checks are pruned on a routine.
+
+**We took:** pending; proposals in the session of 2026-11-16.
