@@ -58,12 +58,13 @@ install_config() {
 }
 
 # Claude Code rewrites settings.json itself, so it cannot be a symlink: merge the repo's keys into it.
-# shortcut: arrays are replaced, not appended (a PreToolUse hook added by hand is lost); merge per hook if that happens.
+# Hook lists are appended without duplicates, so hooks added by hand survive.
+# shortcut: a hook renamed in claude-settings.json leaves its old entry behind; remove it by hand.
 merge_claude_settings() {
   local src="$REPO/claude-settings.json" dest="$HOME/.claude/settings.json" merged
   [ -f "$src" ] || return 0
   [ -f "$dest" ] || echo '{}' > "$dest"
-  merged="$(jq -s '.[0] * .[1]' "$dest" "$src")" || { echo "fail    $dest: jq merge" >&2; return 1; }
+  merged="$(jq -s '.[0] as $a | .[1] as $b | ($a * $b) | .hooks = reduce (($b.hooks // {}) | keys[]) as $k ($a.hooks // {}; .[$k] = ((.[$k] // []) + $b.hooks[$k] | unique)) | if .hooks == {} then del(.hooks) else . end' "$dest" "$src")" || { echo "fail    $dest: jq merge" >&2; return 1; }
   if [ "$merged" = "$(jq . "$dest")" ]; then echo "ok      $dest"; return; fi
   printf '%s\n' "$merged" > "$dest"
   echo "merge   $dest <- $src"
