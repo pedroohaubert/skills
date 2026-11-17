@@ -63,6 +63,8 @@ Reading these is part of the task, every time you write or change code beyond a 
 1. **Ponytail.** When the Ponytail plugin is installed, it is the default for any code change, yours or a subagent's:
    - Before the first edit, read its `ponytail` skill in full and list every place the change must reach (callers, tests, fixtures, config).
    - Before you call the change done, commit it or open a PR, run the `ponytail-review` skill on the diff and fix what it finds. The PR or report says the review ran and what changed because of it.
+   - Review in rounds. Each round gets the previous round's findings and marks each new one important, nit, or pre-existing; stop when a round finds nothing important, or after three rounds. The review covers the final diff: an edit after it means another round.
+   - When the repo has a `REVIEW.md` (its checklist of past breakages), read it from the base branch (`git show <base>:REVIEW.md`), so the change cannot edit its own checklist, and check every item whose trigger appears in the diff.
    - Mark each known shortcut in the code with `shortcut: <the limit>, <when to upgrade>`.
    - End the report with one or two lines: what you skipped or did not check, and the risk the user must know.
    - Use `ponytail-audit` to rank what to fix in a whole repo.

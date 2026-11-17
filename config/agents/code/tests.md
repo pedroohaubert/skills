@@ -19,7 +19,7 @@ Tests that fail on harmless refactors teach people to ignore red; tests that pas
 A repo with no tests at all gets the stack's standard runner (pytest for Python, the runner the frontend toolchain already favors for TypeScript) with the minimum setup the first test needs; name the new dependency in the reply.
 
 1. **Business rules live in pure functions with unit tests.** Pull the decision out of the route, component, or job into a function that takes plain values and returns plain values, then test it with a table of cases: inputs on the left, expected result on the right, one row per rule or edge. These tests are fast, stable, and read like the specification.
-2. **Test invariants, not only examples.** Besides "this input gives that output", assert the property that must always hold: "every state that has an owner lands in some role's queue", "every transition in the table is covered by a test case", "a refund never exceeds the original charge". An invariant test catches the case nobody thought to write.
+2. **Test invariants, not only examples.** Besides "this input gives that output", assert the property that must always hold: "every state that has an owner lands in some role's queue", "every transition in the table is covered by a test case", "a refund never exceeds the original charge". An invariant test catches the case nobody thought to write. When the repo has a property-testing library (fast-check, Hypothesis), or the logic is a parser, serializer, or calculation over a wide input space, write the invariant as a property and let the library generate the inputs; a library the repo lacks is a new dependency, named in the reply. The properties that pay most: round trip (`parse(format(x))` equals `x`), idempotence (applying twice equals applying once), and an optimized version agreeing with a naive one.
 3. **Bugs start with a red test.** Reproduce the bug as a failing test before touching the fix, watch it fail for the reported reason, then fix until it passes. The test stays as the regression guard.
 4. **Browser tests only for the flows that must never break** (sign in, save, pay, submit the main form). Drive the real UI with Playwright and mock only the network boundary you do not own. Everything else is cheaper and steadier as a unit test of the logic underneath.
 
@@ -31,7 +31,7 @@ A repo with no tests at all gets the stack's standard runner (pytest for Python,
 - **One behavior per test.** Several asserts are fine when they describe the same behavior from different angles.
 - **Arrange only what the behavior needs.** A fixture with forty fields hides the two that matter; build the minimum and name the variation.
 - **Do not mock your own code.** Mocking a module you own couples the test to its internals. Mock what you do not control (network, clock, third-party APIs), or better, pass it in.
-- **Deterministic or deleted.** A flaky test is a bug: fix the timing, the order dependence, or the shared state; never add retries to make it pass.
+- **Deterministic or deleted.** A flaky test is a bug: fix its cause (timing, order dependence, shared state), or delete it and write why in the commit. Skips, sleeps, retries, and reruns until green only hide the bug.
 - **Assert on what users see or receive:** the returned value, the HTTP status and body, the text on screen, the row in the database. Not on calls between your own functions.
 
 ## When you change code

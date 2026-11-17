@@ -12,6 +12,10 @@ Small, clear task: do it directly. Otherwise ask your questions together at the 
 
 Done means verified: run or open the real result, show the evidence, and check the original request item by item.
 
+Every commit message ends with a `Verified:` trailer naming the check that proved the change (the command, request, test, or screen), or `Verified: none - <why nothing could run>`. A hook in Claude Code and Pi reads it on every commit.
+
+When a check still fails after three rounds of fixes, stop: report what you tried, what failed, and your best guess at the cause, and let the user decide the next move.
+
 A code change is done only after the `ponytail-review` skill ran on its diff and its findings were fixed, when Ponytail is installed (`~/.agents/code.md`).
 
 ## Delegation

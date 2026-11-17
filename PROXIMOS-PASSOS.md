@@ -18,6 +18,8 @@ Also done (2026-11-11): OpenCode dropped as a harness; the setup targets Claude 
 6. **Rotate credentials** that appear in plain text in the prompt history and in `~/.codex/config.toml`.
 7. **Design and code together.** The user wants to talk through how the `design` skill and `code.md` divide UI work ("já falaremos mais sobre isso"); today the root sends UI work to `design` first, then `code.md`.
 8. **Push** the local commits of the design rework when the user approves.
+9. **Commit gate to enforce (started 2026-11-16).** Every agent commit goes through `config/agents/hooks/commit-gate.mjs` (Claude Code hook from `claude-settings.json`, Pi extension `config/pi/extensions/commit-gate.ts`). It starts in observe mode: it logs to `~/.local/state/commit-gate.log` and blocks nothing. After about two weeks, read the log with the user; if agents write the `Verified:` trailer, change the default `MODE` in the script to `enforce`. Open question for then: whether work repos with strict commit conventions accept the trailer.
+10. **Monthly cleanup (recurring).** Read the tree and each project's `REVIEW.md`; delete rules that no longer change behavior, merge duplicates, and drop checklist items that never fired. Record the date here.
 
 ## How to resume
 

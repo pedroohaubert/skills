@@ -148,4 +148,4 @@ https://claude.dev/blog/how-the-claude-code-team-thinks-about-verification/ · r
 - Review the reviewers: reverts, rejections, and a recall eval built from past incidents.
 - Misses become rules only when seen in two or more PRs and visible from a diff; three agents try to disprove each. Flaky tests are fixed at the root or deleted with a written reason, never retried or slept. Rules and checks are pruned on a routine.
 
-**We took:** pending; proposals in the session of 2026-11-16.
+**We took (2026-11-16):** a commit gate shared by Claude Code and Pi (`config/agents/hooks/commit-gate.mjs`: a `Verified:` trailer on every agent commit, starting in observe mode and logging to `~/.local/state/commit-gate.log`); stop after three failed rounds (root); keep the judge fixed (verification playbook); flaky tests fixed or deleted, property tests (`code/tests.md`); differential tests as the refactor pin; review in rounds and a per-repo `REVIEW.md` read from the base branch (`code.md`, `learning.md`); a periodic cleanup in `PROXIMOS-PASSOS.md`. Left out, as team-scale: grading the reviewer on past incidents, revert metrics, adversarial agents per rule.

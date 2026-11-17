@@ -2,7 +2,7 @@
 
 The structure changes; the behavior stays. A bug or a missing feature found on the way is reported and handled as its own task.
 
-1. **Pin the behavior.** Before moving anything, have a test, snapshot, or script that captures what the code does today, and see it pass. Type checks and lint are not a pin.
+1. **Pin the behavior.** Before moving anything, have a test, snapshot, or script that captures what the code does today, and see it pass. Type checks and lint are not a pin. For a rewrite or migration where old and new can run side by side, the pin is a differential test: feed both the same inputs (recorded real ones beat invented ones), compare the outputs, and keep a short list of approved differences, each with its reason.
 2. **Name the target shape** in a few lines: the modules, types, and calls as they should be afterwards. The reshape must remove branches, invalid states, or duplication; one that only adds a layer is not worth doing.
 3. **Subtract first.** Delete dead code, one-caller wrappers, and redundant checks before building the new shape.
 4. **Move in small steps,** each keeping the pin green. When an API changes, migrate every caller and delete the old one in the same change. After a rename, search strings, docs, and config for the old name.
