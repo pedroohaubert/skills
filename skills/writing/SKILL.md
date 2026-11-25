@@ -44,4 +44,4 @@ Write the final text to a temporary file and run `scripts/copy.sh <file>`, so th
 1. the same text, as plain paragraphs;
 2. in Correct mode, a short, dry list of what changed;
 3. at most one line when the text needs a decision from the user, such as a fact you could not confirm;
-4. a last line saying it was copied.
+4. a last line saying it was copied, written only after `copy.sh` printed `copied` (it reads the clipboard back and fails when it is empty or different); when it fails, say so and copy again.

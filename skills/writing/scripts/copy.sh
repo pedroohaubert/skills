@@ -1,14 +1,17 @@
 #!/usr/bin/env bash
-# Copies a text file to the system clipboard, byte for byte.
+# Copies a text file to the system clipboard, byte for byte, then reads it back.
 # Usage: copy.sh <file>. A .html file goes in as rich text (lists, bold, spacing
 # survive a paste into Teams or email), with a plain-text fallback.
+# Prints "copied" only when the clipboard reads back non-empty and equal to the text.
 set -euo pipefail
 
 file="${1:?usage: copy.sh <file>}"
 [ -s "$file" ] || { echo "copy.sh: $file is missing or empty" >&2; exit 1; }
 
+expected=$(cat "$file")
 if [[ "$file" == *.html ]] && command -v osascript >/dev/null; then
-  plain=$(textutil -convert txt -stdout "$file")
+  plain=$(textutil -inputencoding UTF-8 -convert txt -stdout "$file")
+  expected=$plain
   osascript -l JavaScript - "$file" "$plain" >/dev/null <<'JS'
 ObjC.import('AppKit');
 function run(a) {
@@ -26,4 +29,17 @@ elif command -v clip.exe >/dev/null; then clip.exe < "$file"
 else echo "copy.sh: no clipboard tool found (pbcopy, wl-copy, xclip, clip.exe)" >&2; exit 1
 fi
 
-echo "copied $(wc -m < "$file" | tr -d ' ') characters to the clipboard"
+if command -v pbpaste >/dev/null; then got=$(pbpaste)
+elif command -v wl-paste >/dev/null; then got=$(wl-paste --no-newline)
+elif command -v xclip >/dev/null; then got=$(xclip -selection clipboard -o)
+else echo "copy.sh: no way to read the clipboard back (pbpaste, wl-paste, xclip); not confirmed" >&2; exit 1
+fi
+
+if [ -z "${got//[[:space:]]/}" ]; then
+  echo "copy.sh: the clipboard reads back empty; nothing was copied" >&2; exit 1
+fi
+if [ "$got" != "$expected" ]; then
+  echo "copy.sh: the clipboard reads back different from $file; copy again" >&2; exit 1
+fi
+
+echo "copied $(wc -m < "$file" | tr -d ' ') characters to the clipboard (read back and checked)"
